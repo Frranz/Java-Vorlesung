@@ -1,0 +1,18 @@
+<diagram program="umletino" version="14.2"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>480</x><y>100</y><w>190</w><h>120</h></coordinates><panel_attributes>/Mensch/
+--
+-personalnummer: int
+-name:string
+-adresse:string
+-geburtstag:string
+--
++getGehalt(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>330</y><w>120</w><h>60</h></coordinates><panel_attributes>Arbeiter
+--
+-stundenlohn:int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>210</y><w>140</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>330</y><w>100</w><h>60</h></coordinates><panel_attributes>Angestellter
+--
+-grundgehalt: int
+-zulagen:int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>210</y><w>50</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>330</y><w>100</w><h>60</h></coordinates><panel_attributes>Manager
+--
+-grundgehalt: int
+-umsatz</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>210</y><w>150</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>330</y><w>160</w><h>50</h></coordinates><panel_attributes>Geschäftsführer
+--
+-geschäftsführerzulage: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>350</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element></diagram>
