@@ -1,0 +1,1 @@
+gehaltsberechnung schluckt array und gibt dann alle Gehälter für die leute aus

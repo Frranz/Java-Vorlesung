@@ -7,12 +7,16 @@ public class Hallo {
 
     public static void main(String[] args){
         int[] array = new int[90];
+        int intToFind = 0;
         rand = new Random();
         initArray(array);
+        array[20] = intToFind;
         System.out.print(Arrays.toString(array));
         System.out.println(" ");
         bubbleSort(array);
-        System.out.print(Arrays.toString(array));
+        System.out.println(Arrays.toString(array));
+        int ind = getPositionOfInt(array,intToFind);
+        System.out.println(ind);
 
     }
 
@@ -40,5 +44,22 @@ public class Hallo {
     }
     private static int second(int[] array){
         return array[1];
+    }
+
+    private static int getPositionOfInt(int[] array,int findMe){
+        int counter = 0;
+        int arrlen = array.length/4;
+        int index = array.length/2;
+        while(array[index]!=findMe){
+            if(array[index]>findMe){
+                index = index - arrlen-1;
+            }else {
+                index = index + arrlen+1;
+            }
+            arrlen /= 2;
+            counter++;
+        }
+        System.out.printf("needed %d runs\n",counter);
+        return index;
     }
 }
