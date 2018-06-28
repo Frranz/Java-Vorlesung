@@ -1,0 +1,3 @@
+check uml
+fill movie class
+think if model is good
