@@ -1,12 +1,13 @@
-package com.company;
+package src.com.company;
 
 import java.util.List;
+import java.util.Map;
 
 public class MovieBase {
     private int id;
-    private List<Movie> movies;
-    private List<Director> directors;
-    private List<Actor> actors;
+    private Map<Integer,Movie> movies;
+    private Map<Integer,Director> directors;
+    private Map<Integer,Actor> actors;
     private List<Review> reviews;
     private List<Reviewer> reviewers;
 
@@ -18,15 +19,23 @@ public class MovieBase {
         this.id = id;
     }
 
-    public List<Movie> getMovies() {
+    public Actor getActorById(int id){
+        return actors.get(id);
+    }
+
+
+
+
+
+    public Map<Integer,Movie> getMovies() {
         return movies;
     }
 
-    public List<Director> getDirectors() {
+    public Map<Integer, Director> getDirectors() {
         return directors;
     }
 
-    public List<Actor> getActors() {
+    public Map<Integer,Actor> getActors() {
         return actors;
     }
 
@@ -39,15 +48,15 @@ public class MovieBase {
     }
 
     public void addMovie(Movie newMovie){
-        movies.add(newMovie);
+        movies.put(newMovie.getId(),newMovie);
     }
 
     public void addDirector(Director newDirector){
-        directors.add(newDirector);
+        directors.put(newDirector.getId(),newDirector);
     }
 
     public void addActor(Actor newActor){
-        actors.add(newActor);
+        actors.put(newActor.getId(),newActor);
     }
 
     public void addReview(Review newReview){
@@ -56,5 +65,13 @@ public class MovieBase {
 
     public void addReviewer(Reviewer newReviewer){
         reviewers.add(newReviewer);
+    }
+
+    public Movie getMovieById(int i) {
+        return movies.get(i);
+    }
+
+    public Director getDirectorById(int i) {
+        return directors.get(i);
     }
 }
