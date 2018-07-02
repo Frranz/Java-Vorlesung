@@ -1,12 +1,14 @@
 package src.com.company;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Director extends Human{
-    List<Movie> directedMovies;
+    private List<Movie> directedMovies;
 
     public Director(String line) {
-        String[] lineSplit = line.split("[^\",].*?(?=\")");
+        directedMovies = new LinkedList<>();
+        String[] lineSplit = line.substring(1,line.length()-1).split("\",\"");
         if(lineSplit.length != 2){
             System.out.println("komischer Datensatz: "+line);
         }else{

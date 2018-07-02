@@ -1,6 +1,7 @@
 package src.com.company;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Movie {
@@ -10,22 +11,28 @@ public class Movie {
     private String genre;
     private List<Actor> actors;
     private Director director;
-    private Date release;
+    private String release;
     private List<Review> reviews;
     private int reviewAmount;
     private float averageReviewScore;
 
     public Movie(String line) {
-        String[] lineSplit = line.split("[^\",].*?(?=\")");
-        if(lineSplit.length!=7){
-            System.out.println("komischer Datensatz: "+line);
-        }else{
-            id = Integer.valueOf(lineSplit[0]);
-            title = lineSplit[1];
-            plot = lineSplit[2];
-            genre = lineSplit[3];
-            release = new Date(lineSplit[4]);
+        actors = new LinkedList<>();
+        reviews = new LinkedList<>();
+
+        String[] lineSplit = line.substring(1,line.length()-1).split("\",\"");
+        id = Integer.valueOf(lineSplit[0]);
+        title = lineSplit[1];
+        plot = lineSplit[2];
+        genre = lineSplit[3];
+
+        if(lineSplit.length > 4 && lineSplit[4]!=null){
+            release = lineSplit[4];
+        }
+        if(lineSplit.length > 5 && !lineSplit[5].equals("")){
             reviewAmount = Integer.valueOf(lineSplit[5]);
+        }
+        if(lineSplit.length > 6 && lineSplit[6]!=null){
             averageReviewScore = Float.valueOf(lineSplit[6]);
         }
     }
@@ -86,11 +93,11 @@ public class Movie {
         this.director = director;
     }
 
-    public Date getRelease() {
+    public String getRelease() {
         return release;
     }
 
-    public void setRelease(Date release) {
+    public void setRelease(String release) {
         this.release = release;
     }
 

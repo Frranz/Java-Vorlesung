@@ -5,14 +5,30 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.stream.Stream;
 
 public class Main {
     private static final String filepath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\movieproject.db";
 
     public static void main(String args[]){
-        System.out.println("asdf");
+
+        System.out.println("Moviedatenbank wird geladen...");
         MovieBase bs = createMovieBase(filepath);
-        System.out.println("asdf");
+        System.out.println("Moviedatenbank wurde fertig geladen...");
+
+        if(args.length>0){
+            String[][] arr = new String[args.length][2];
+            
+
+        }
+
+        int count = 0;
+        for(String s: bs.getReviewers().keySet()){
+            count += bs.getReviewer(s).getReviews().size();
+        }
+        System.out.printf("reviews: %d",count);
     }
 
     private static MovieBase createMovieBase(String path){
@@ -22,6 +38,7 @@ public class Main {
         Director director;
         Review review;
         Reviewer reviewer;
+        int counter = 0;
 
         String[] lineSplit;
         try {
@@ -31,7 +48,7 @@ public class Main {
 
 
             while(line!=null){
-
+//                System.out.println(counter++);
                 if(line.length()>13&& line.substring(0,12).equals("New_Entity: ")){
                     switch(line){
                         case "New_Entity: \"actor_id\",\"actor_name\"":
@@ -71,7 +88,7 @@ public class Main {
                             mb.addDirector(director);
                             break;
                         case "actorIdToMovieId":
-                            lineSplit = line.split("[^\",].*?(?=\")");
+                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
                             actor = mb.getActorById(Integer.parseInt(lineSplit[0]));
                             movie = mb.getMovieById(Integer.parseInt(lineSplit[1]));
                             if(movie!=null && actor!=null){
@@ -82,7 +99,7 @@ public class Main {
                             }
                             break;
                         case "directorIdToMovieId":
-                            lineSplit = line.split("[^\",].*?(?=\")");
+                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
                             director = mb.getDirectorById(Integer.parseInt(lineSplit[0]));
                             movie = mb.getMovieById(Integer.parseInt(lineSplit[1]));
                             if(director!=null && movie!=null){
@@ -94,14 +111,18 @@ public class Main {
 
                             break;
                         case "review":
-                            lineSplit = line.split("[^\",].*?(?=\")");
-                            reviewer = new Reviewer();
+                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
+                            reviewer = mb.getReviewer(lineSplit[0]);
+                            if(reviewer == null){
+                                reviewer = new Reviewer(lineSplit[0]);
+                            }
                             mb.addReviewer(reviewer);
                             movie = mb.getMovieById(Integer.parseInt(lineSplit[2]));
                             if(movie!=null){
-                                review = new Review(Float.parseFloat(lineSplit[0]),movie,reviewer);
+                                review = new Review(Float.parseFloat(lineSplit[1]),movie,reviewer);
                                 reviewer.addReview(review);
                                 movie.addReview(review);
+                                mb.addReview(review);
                             }else{
                                 System.out.println("movie null in line: "+line);
                             }

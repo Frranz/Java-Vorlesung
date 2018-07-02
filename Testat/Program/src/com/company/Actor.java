@@ -1,12 +1,14 @@
 package src.com.company;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Actor extends Human {
     private List<Movie> actedMovies;
 
     public Actor(String line) {
-        String[] lineSplit = line.split("[^\",].*?(?=\")");
+        actedMovies = new LinkedList<>();
+        String[] lineSplit = line.substring(1,line.length()-1).split("\",\"");
         setId(Integer.valueOf(lineSplit[0].trim()));
         setName(lineSplit[1]);
     }

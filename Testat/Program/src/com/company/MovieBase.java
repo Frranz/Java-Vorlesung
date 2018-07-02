@@ -1,16 +1,27 @@
 package src.com.company;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class MovieBase {
     private int id;
-    private Map<Integer,Movie> movies;
-    private Map<Integer,Director> directors;
-    private Map<Integer,Actor> actors;
+    private HashMap<Integer,Movie> movies;
+    private HashMap<Integer,Director> directors;
+    private HashMap<Integer,Actor> actors;
     private List<Review> reviews;
-    private List<Reviewer> reviewers;
+    private HashMap<String,Reviewer> reviewers;
 
+    public MovieBase() {
+        movies = new HashMap<>();
+        actors = new HashMap<>();
+        directors = new HashMap<>();
+        reviewers = new HashMap<>();
+        reviews = new LinkedList<>();
+
+        System.out.println("moviebase wurde initialisiert");
+    }
     public int getId() {
         return id;
     }
@@ -43,7 +54,7 @@ public class MovieBase {
         return reviews;
     }
 
-    public List<Reviewer> getReviewers() {
+    public HashMap<String, Reviewer> getReviewers() {
         return reviewers;
     }
 
@@ -64,7 +75,7 @@ public class MovieBase {
     }
 
     public void addReviewer(Reviewer newReviewer){
-        reviewers.add(newReviewer);
+        reviewers.put(newReviewer.getUserName(),newReviewer);
     }
 
     public Movie getMovieById(int i) {
@@ -73,5 +84,9 @@ public class MovieBase {
 
     public Director getDirectorById(int i) {
         return directors.get(i);
+    }
+
+    public Reviewer getReviewer(String userName){
+        return reviewers.get(userName);
     }
 }
