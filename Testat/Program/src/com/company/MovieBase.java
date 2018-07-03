@@ -38,7 +38,7 @@ public class MovieBase {
 
 
 
-    public Map<Integer,Movie> getMovies() {
+    public Map<Integer,Movie> getMoviesMap() {
         return movies;
     }
 
@@ -89,4 +89,23 @@ public class MovieBase {
     public Reviewer getReviewer(String userName){
         return reviewers.get(userName);
     }
+
+    public List<Movie> getMovies() {
+        List<Movie> someMovies = new LinkedList<>();
+        for(int key: movies.keySet()){
+            someMovies.add(movies.get(key));
+        }
+        return someMovies;
+    }
+
+    public static List<Movie> filterMoviesByGenre(List<Movie> movies,String genre){
+        for(Movie m:movies){
+            if(!m.getGenre().contains(genre)){
+                movies.remove(m);
+            }
+        }
+        return movies;
+    }
+
+
 }

@@ -5,23 +5,28 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Main {
     private static final String filepath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\movieproject.db";
 
     public static void main(String args[]){
-
+        String[][] argsArr = new String[args.length][];
         System.out.println("Moviedatenbank wird geladen...");
         MovieBase bs = createMovieBase(filepath);
         System.out.println("Moviedatenbank wurde fertig geladen...");
 
         if(args.length>0){
-            String[][] arr = new String[args.length][2];
-            
+            int counter = 0;
+            for(String s:args){
+                s = s.substring(2);
+                argsArr[counter] = s.split("=");
+                counter++;
+            }
 
+            List<Movie> movies = getSuggestedMovies(bs.getMovies(),argsArr);
+            System.out.println(movies.toString());
         }
 
         int count = 0;
@@ -33,6 +38,7 @@ public class Main {
 
     private static MovieBase createMovieBase(String path){
         MovieBase mb = new MovieBase();
+        String genre;
         Actor actor;
         Movie movie;
         Director director;
@@ -80,8 +86,14 @@ public class Main {
                             mb.addActor(actor);
                             break;
                         case "movie":
-                            movie = new Movie(line);
-                            mb.addMovie(movie);
+                            movie = mb.getMovieById(Integer.parseInt(line.substring(1,line.length()-1).split("\",\"")[0]));
+                            if(movie==null){  //wenn Film mit id bereits existiert
+                                movie = new Movie(line);
+                                mb.addMovie(movie);
+                            }else{
+                                genre = line.substring(1,line.length()-1).split("\",\"")[3];
+                                movie.addGenre(genre);
+                            }
                             break;
                         case "directorIdToName":
                             director = new Director(line);
@@ -133,17 +145,36 @@ public class Main {
 
                 line = br.readLine();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (FileValidityException e) {
+        } catch (FileValidityException | IOException e) {
             e.printStackTrace();
         }
 
         return mb;
     }
 
+    public static List<Movie> getSuggestedMovies(List<Movie> movies,String[][] args){
+        if(args.length==0 || movies.size()==0){
+            return movies;
+        }
+        for(String[] s:args){
+            switch(s[0]){
+                case "genre":
+
+                    break;
+                case "actor":
+                    break;
+                case "director":
+                    break;
+                case "film":
+                    break;
+                case "limit":
+                    break;
+                default:
+                    print("Komisches Argument"+s[0]);
+            }
+        }
+        return getSuggestedMovies(movies,Arrays.copyOfRange(args,1,args.length-1));
+    }
 
     public static void print(String s){
         System.out.println(s);

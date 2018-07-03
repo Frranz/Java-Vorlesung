@@ -1,6 +1,5 @@
 package src.com.company;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +7,7 @@ public class Movie {
     private int id;
     private String title;
     private String plot;
-    private String genre;
+    private List<String> genre;
     private List<Actor> actors;
     private Director director;
     private String release;
@@ -24,7 +23,7 @@ public class Movie {
         id = Integer.valueOf(lineSplit[0]);
         title = lineSplit[1];
         plot = lineSplit[2];
-        genre = lineSplit[3];
+        genre.add(lineSplit[3]);
 
         if(lineSplit.length > 4 && lineSplit[4]!=null){
             release = lineSplit[4];
@@ -35,6 +34,10 @@ public class Movie {
         if(lineSplit.length > 6 && lineSplit[6]!=null){
             averageReviewScore = Float.valueOf(lineSplit[6]);
         }
+    }
+
+    public String toString(){
+        return "Film "+id+" "+title+" rating: "+averageReviewScore;
     }
 
     public void addActors(Actor newActor){
@@ -77,12 +80,12 @@ public class Movie {
         this.plot = plot;
     }
 
-    public String getGenre() {
+    public List<String> getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void addGenre(String genre) {
+        this.genre.add(genre);
     }
 
     public Director getDirector() {

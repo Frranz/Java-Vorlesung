@@ -1,3 +1,4 @@
 check uml
-fill movie class
-think if model is good
+
+
+rethink concept of multiple values in single parameter key
