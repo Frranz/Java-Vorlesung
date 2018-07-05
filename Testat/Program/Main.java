@@ -25,8 +25,8 @@ public class Main {
                 counter++;
             }
 
-            List<Movie> movies = getSuggestedMovies(bs.getMovies(),argsArr);
-            System.out.println(movies.toString());
+            List<Movie> movies = bs.getSuggestedMovies(argsArr);
+            MovieBase.printMoviesList(movies);
         }
 
         int count = 0;
@@ -106,6 +106,7 @@ public class Main {
                             if(movie!=null && actor!=null){
                                 actor.addActedMovie(movie);
                                 movie.addActors(actor);
+                                movie.addActorName(actor.getName());
                             }else{
                                 System.out.println("movie or actor null in line: "+line);
                             }
@@ -150,30 +151,6 @@ public class Main {
         }
 
         return mb;
-    }
-
-    public static List<Movie> getSuggestedMovies(List<Movie> movies,String[][] args){
-        if(args.length==0 || movies.size()==0){
-            return movies;
-        }
-        for(String[] s:args){
-            switch(s[0]){
-                case "genre":
-
-                    break;
-                case "actor":
-                    break;
-                case "director":
-                    break;
-                case "film":
-                    break;
-                case "limit":
-                    break;
-                default:
-                    print("Komisches Argument"+s[0]);
-            }
-        }
-        return getSuggestedMovies(movies,Arrays.copyOfRange(args,1,args.length-1));
     }
 
     public static void print(String s){

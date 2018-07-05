@@ -2,3 +2,11 @@ check uml
 
 
 rethink concept of multiple values in single parameter key
+
+
+von oberstem parameter nach unten rekursieren
+nach qualität der gefilterten movies sorten
+
+
+each filter type returns an array of sets, where the set index marks the goodness of the filtering.
+next step: go from first to last array, delete all duplicates in later arrays

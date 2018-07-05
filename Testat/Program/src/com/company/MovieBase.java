@@ -1,9 +1,6 @@
 package src.com.company;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MovieBase {
     private int id;
@@ -107,5 +104,111 @@ public class MovieBase {
         return movies;
     }
 
+    private HashSet<Movie>[] filterByListAttribute( String filterKey,String[] vals){
+        HashSet<Movie>[] movieSet = new HashSet[vals.length];
+        for(HashSet<Movie> hm:movieSet){
+            hm = new HashSet<>();
+        }
+        boolean someCondition = false;
+        Iterator<Movie> iterator = getMovies().iterator();
+        Movie m;
+        int filterCounter = 0;
+        while(iterator.hasNext()){
+            m = iterator.next();
+
+            switch(filterKey){
+                case "genre":
+                    filterCounter = 0;
+                    for(String val:vals){
+                        if(m.getGenre().contains(val)){
+                            filterCounter++;
+                        }
+                    }
+                    break;
+                case "actor":
+                    filterCounter = 0;
+                    for(String val:vals){
+                        if(m.getActorNames().contains(val)){
+                            filterCounter++;
+                        }
+                    }
+                    break;
+                case "director":
+                    filterCounter = 0;
+                    for(String val:vals){
+                        if(m.getDirector().getName().equals(val)){
+                            filterCounter++;
+                        }
+                    }
+                    break;
+            }
+
+            if (filterCounter>0) {
+                movieSet[filterCounter-1].add(m);
+                //iterator.remove();
+            }
+        }
+
+        return movieSet;
+    }
+
+    public static void printMoviesList(List<Movie> movies){
+        for(Movie m: movies){
+            System.out.println(m.toString());
+        }
+    }
+
+    public List<Movie> getSuggestedMovies(String[][] args) {
+        if (args.length == 0 ) {
+            System.out.println("keine argumente bei getSuggestedMovie");
+            return null;
+        }
+        String[] vals;
+        List<HashSet<Movie>[]> moviesSplitted = new ArrayList<>();
+        List<Movie> filteredMovies = new LinkedList<>();
+        int counter = 0;
+
+        boolean containsFilter;
+        for (String[] s : args) {
+            switch (s[0]) {
+                case "genre":
+                    vals = s[1].substring(1, s[1].length() - 1).split(",");
+                    moviesSplitted.add(
+                            filterByListAttribute(s[0],vals)
+                    );
+                    print("filtered by genre");
+                    break;
+                case "actor":
+                    vals = s[1].substring(1, s[1].length() - 1).split(",");
+                    moviesSplitted.add(
+                            filterByListAttribute(s[0],vals)
+                    );
+                    print("filtered by actor");
+                    break;
+                case "director":
+                    vals = s[1].substring(1, s[1].length() - 1).split(",");
+                    moviesSplitted.add(
+                            filterByListAttribute(s[0],vals)
+                    );
+                    print("filtered by director");
+                    break;
+                case "film":
+                    //später machen
+                    break;
+                case "limit":
+                    //movies = movies.subList(0, Integer.parseInt(s[1]));
+                    break;
+                default:
+                    print("Komisches Argument" + s[0]);
+            }
+            counter++;
+        }
+
+        return filteredMovies;
+    }
+    public static void print(String s){
+        System.out.println(s);
+    }
 
 }
+;

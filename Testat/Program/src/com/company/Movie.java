@@ -9,6 +9,8 @@ public class Movie {
     private String plot;
     private List<String> genre;
     private List<Actor> actors;
+    private List<String> actorNames;
+
     private Director director;
     private String release;
     private List<Review> reviews;
@@ -17,7 +19,9 @@ public class Movie {
 
     public Movie(String line) {
         actors = new LinkedList<>();
+        actorNames = new LinkedList<>();
         reviews = new LinkedList<>();
+        genre = new LinkedList<>();
 
         String[] lineSplit = line.substring(1,line.length()-1).split("\",\"");
         id = Integer.valueOf(lineSplit[0]);
@@ -37,7 +41,7 @@ public class Movie {
     }
 
     public String toString(){
-        return "Film "+id+" "+title+" rating: "+averageReviewScore;
+        return "Film "+id+" rating: "+averageReviewScore+" "+title+" Genre: "+genre;
     }
 
     public void addActors(Actor newActor){
@@ -50,6 +54,14 @@ public class Movie {
 
     public List<Actor> getActors() {
         return actors;
+    }
+
+    public List<String> getActorNames() {
+        return actorNames;
+    }
+
+    public void addActorName(String name){
+        actorNames.add(name);
     }
 
     public List<Review> getReviews() {
