@@ -10,3 +10,13 @@ nach qualität der gefilterten movies sorten
 
 each filter type returns an array of sets, where the set index marks the goodness of the filtering.
 next step: go from first to last array, delete all duplicates in later arrays
+
+
+find similar films: 
+reviewer durchgehen, reviews von reviewer in 3 Teile teilen, nach Rating, jeden Film zu Map oder irgendwas hinzufügen und zum value der map den index des Teils addieren
+
+einzel arrays nach rating sortieren
+
+0,41 = 16,28%
+
+still not sure about suggestion algorithm

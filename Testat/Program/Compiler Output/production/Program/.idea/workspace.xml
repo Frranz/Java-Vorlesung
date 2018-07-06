@@ -17,8 +17,8 @@
       <file leaf-file-name="Movie.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Movie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
+            <state relative-caret-position="168">
+              <caret line="95" selection-start-line="95" selection-end-line="95" />
               <folding>
                 <element signature="e#1152#1153#0" expanded="true" />
                 <element signature="e#1243#1244#0" expanded="true" />
@@ -26,7 +26,6 @@
                 <element signature="e#1588#1589#0" expanded="true" />
                 <element signature="e#1637#1638#0" expanded="true" />
                 <element signature="e#1662#1663#0" expanded="true" />
-                <element signature="e#1960#1961#0" expanded="true" />
                 <element signature="e#1988#1989#0" expanded="true" />
               </folding>
             </state>
@@ -36,8 +35,8 @@
       <file leaf-file-name="MovieBase.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/MovieBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="148" column="24" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
+            <state relative-caret-position="440">
+              <caret line="127" column="29" lean-forward="true" selection-start-line="127" selection-start-column="29" selection-end-line="127" selection-end-column="29" />
               <folding>
                 <element signature="e#4643#4644#0" expanded="true" />
                 <element signature="e#4680#4681#0" expanded="true" />
@@ -159,8 +158,8 @@
         <option value="$PROJECT_DIR$/src/com/company/Actor.java" />
         <option value="$PROJECT_DIR$/src/com/company/Director.java" />
         <option value="$PROJECT_DIR$/src/com/company/Reviewer.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Movie.java" />
         <option value="$PROJECT_DIR$/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Movie.java" />
         <option value="$PROJECT_DIR$/src/com/company/MovieBase.java" />
       </list>
     </option>
@@ -175,9 +174,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="401" />
-    <option name="y" value="-14" />
-    <option name="width" value="1019" />
+    <option name="x" value="400" />
+    <option name="y" value="-15" />
+    <option name="width" value="1020" />
     <option name="height" value="1085" />
   </component>
   <component name="ProjectView">
@@ -300,12 +299,12 @@
       <workItem from="1530556253914" duration="2611000" />
       <workItem from="1530606410090" duration="3996000" />
       <workItem from="1530646981398" duration="134000" />
-      <workItem from="1530805712438" duration="5383000" />
+      <workItem from="1530805712438" duration="6758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44703000" />
+    <option name="totallyTimeSpent" value="46078000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -318,9 +317,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32905984" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32905984" />
       <window_info anchor="right" id="Maven Projects" order="3" />
@@ -328,17 +327,16 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32905984" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1119403" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1119403" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3988604" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="3" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32905984" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -382,7 +380,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="31" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/MovieBase.java</url>
+          <line>146</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="34" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -406,6 +412,26 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>movieSet[0]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>movieSet</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>movieSet[]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>movieSet[1]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>movies</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -427,26 +453,6 @@
       </expression>
       <expression>
         <expression-string>lineSplit</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>lineSplit[4]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>bs.reviews</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>actors.put()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>newActor.getId()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -579,7 +585,6 @@
             <element signature="e#1588#1589#0" expanded="true" />
             <element signature="e#1637#1638#0" expanded="true" />
             <element signature="e#1662#1663#0" expanded="true" />
-            <element signature="e#1960#1961#0" expanded="true" />
             <element signature="e#1988#1989#0" expanded="true" />
           </folding>
         </state>
@@ -625,7 +630,6 @@
             <element signature="e#1588#1589#0" expanded="true" />
             <element signature="e#1637#1638#0" expanded="true" />
             <element signature="e#1662#1663#0" expanded="true" />
-            <element signature="e#1960#1961#0" expanded="true" />
             <element signature="e#1988#1989#0" expanded="true" />
           </folding>
         </state>
@@ -706,7 +710,6 @@
             <element signature="e#1588#1589#0" expanded="true" />
             <element signature="e#1637#1638#0" expanded="true" />
             <element signature="e#1662#1663#0" expanded="true" />
-            <element signature="e#1960#1961#0" expanded="true" />
             <element signature="e#1988#1989#0" expanded="true" />
           </folding>
         </state>
@@ -770,7 +773,6 @@
             <element signature="e#1588#1589#0" expanded="true" />
             <element signature="e#1637#1638#0" expanded="true" />
             <element signature="e#1662#1663#0" expanded="true" />
-            <element signature="e#1960#1961#0" expanded="true" />
             <element signature="e#1988#1989#0" expanded="true" />
           </folding>
         </state>
@@ -901,23 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Movie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
-          <folding>
-            <element signature="e#1152#1153#0" expanded="true" />
-            <element signature="e#1243#1244#0" expanded="true" />
-            <element signature="e#1555#1556#0" expanded="true" />
-            <element signature="e#1588#1589#0" expanded="true" />
-            <element signature="e#1637#1638#0" expanded="true" />
-            <element signature="e#1662#1663#0" expanded="true" />
-            <element signature="e#1960#1961#0" expanded="true" />
-            <element signature="e#1988#1989#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -928,10 +913,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+          <folding>
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1243#1244#0" expanded="true" />
+            <element signature="e#1555#1556#0" expanded="true" />
+            <element signature="e#1588#1589#0" expanded="true" />
+            <element signature="e#1637#1638#0" expanded="true" />
+            <element signature="e#1662#1663#0" expanded="true" />
+            <element signature="e#1988#1989#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MovieBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="148" column="24" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
+        <state relative-caret-position="440">
+          <caret line="127" column="29" lean-forward="true" selection-start-line="127" selection-start-column="29" selection-end-line="127" selection-end-column="29" />
           <folding>
             <element signature="e#4643#4644#0" expanded="true" />
             <element signature="e#4680#4681#0" expanded="true" />

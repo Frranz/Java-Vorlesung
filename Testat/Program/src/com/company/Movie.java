@@ -1,9 +1,10 @@
 package src.com.company;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Movie {
+public class Movie{
     private int id;
     private String title;
     private String plot;
@@ -41,7 +42,11 @@ public class Movie {
     }
 
     public String toString(){
-        return "Film "+id+" rating: "+averageReviewScore+" "+title+" Genre: "+genre;
+        String title = (this.title==null)?"":this.title;
+        String genre = (this.genre==null)?"":this.genre.toString();
+        String director = (this.director==null)?"":this.director.getName();
+
+        return "Film "+id+" rating: "+averageReviewScore+" "+title+" Genre: "+genre+" director: "+director;
     }
 
     public void addActors(Actor newActor){
@@ -130,5 +135,15 @@ public class Movie {
 
     public void setAverageReviewScore(float averageReviewScore) {
         this.averageReviewScore = averageReviewScore;
+    }
+
+
+}
+
+class MovieComparator implements Comparator<Movie>{
+
+    @Override
+    public int compare(Movie o1, Movie o2) {
+        return (int) ((int) o1.getAverageReviewScore()*10 - o2.getAverageReviewScore()*10);
     }
 }

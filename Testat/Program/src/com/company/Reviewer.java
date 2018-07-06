@@ -26,4 +26,13 @@ public class Reviewer {
     public String getUserName() {
         return this.userName;
     }
+
+    public Review getReviewByMovie(Movie m){
+        for(Review r: reviews){
+            if(r.getMovie()==m){
+                return r;
+            }
+        }
+        return null;
+    }
 }
