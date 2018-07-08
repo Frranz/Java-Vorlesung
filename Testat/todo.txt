@@ -20,3 +20,12 @@ einzel arrays nach rating sortieren
 0,41 = 16,28%
 
 still not sure about suggestion algorithm
+-> more sure about algorithm
+
+limit max criteria points to 10 or something
+
+allow minus values for film suggestion
+
+check if suggestion works
+
+uml aktualisierne

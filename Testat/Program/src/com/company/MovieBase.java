@@ -2,7 +2,6 @@ package src.com.company;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class MovieBase {
     private int id;
@@ -106,16 +105,8 @@ public class MovieBase {
         return movies;
     }
 
-    private HashSet<Movie>[] filterByListAttribute( String filterKey,String[] vals){
+    private void filterByListAttribute(HashMap<Movie, Integer> filteredMovies, String filterKey, String[] vals){
         Director director;
-        HashSet<Movie>[] movieSet = new HashSet[vals.length];
-        /*for(HashSet<Movie> hm:movieSet){
-            hm = new HashSet<>();                   why does this not work???
-        }*/
-        for(int i =0; i<movieSet.length;i++){
-            movieSet[i]=new HashSet<>();
-        }
-        boolean someCondition = false;
         Iterator<Movie> iterator = getMovies().iterator();
         Movie m;
         int filterCounter = 0;
@@ -155,13 +146,11 @@ public class MovieBase {
             }
 
             if (filterCounter>0) {
-                movieSet[movieSet.length -filterCounter].add(m);
-                //iterator.remove();
+                filteredMovies.putIfAbsent(m, 0);
+                filteredMovies.put(m,filteredMovies.get(m)+filterCounter);
             }
             counter++;
         }
-
-        return movieSet;
     }
 
     public static void printMoviesList(List<Movie> movies){
@@ -176,8 +165,8 @@ public class MovieBase {
             return null;
         }
         String[] vals;
-        List<HashSet<Movie>[]> moviesSplitted = new ArrayList<>();
-        List<Movie> filteredMovies;
+        HashMap<Movie,Integer> filteredMovies = new HashMap<>();
+        List<Movie> retMovies;
         int counter = 0;
         int limit = 0;
 
@@ -186,30 +175,22 @@ public class MovieBase {
             switch (s[0]) {
                 case "genre":
                     vals = s[1].split(","); // .substring(1, s[1].length() - 1)
-                    moviesSplitted.add(
-                            filterByListAttribute(s[0],vals)
-                    );
+                    filterByListAttribute(filteredMovies,s[0],vals);
                     print("filtered by genre");
                     break;
                 case "actor":
                     vals = s[1].split(","); // .substring(1, s[1].length() - 1)
-                    moviesSplitted.add(
-                            filterByListAttribute(s[0],vals)
-                    );
+                    filterByListAttribute(filteredMovies,s[0],vals);
                     print("filtered by actor");
                     break;
                 case "director":
                     vals = s[1].split(","); // .substring(1, s[1].length() - 1)
-                    moviesSplitted.add(
-                            filterByListAttribute(s[0],vals)
-                    );
+                    filterByListAttribute(filteredMovies,s[0],vals);
                     print("filtered by director");
                     break;
                 case "film":
                     vals = s[1].split(",");
-                    moviesSplitted.add(
-                            getSimilarMovies(vals)
-                    );
+                    getSimilarMovies(filteredMovies,vals);
                     print("getting similar films");
                     break;
                 case "limit":
@@ -221,16 +202,23 @@ public class MovieBase {
             counter++;
         }
 
-        filteredMovies = filterTopDownDuplicates(moviesSplitted).subList(0,limit);
+        retMovies = movieMapToSortedList(filteredMovies);
 
-        return filteredMovies;
+        return retMovies;
     }
 
-    private HashSet<Movie>[] getSimilarMovies(String[] vals) {
-        HashSet<Movie>[] movieSetArr = new HashSet[3];
-        for(int i =0; i<movieSetArr.length;i++){
-            movieSetArr[i]=new HashSet<>();
-        }
+    private List<Movie> movieMapToSortedList(HashMap<Movie,Integer> filteredMovies) {
+        List<Movie> movies = new LinkedList<>();
+
+        movies = filteredMovies.entrySet().stream()
+                .sorted(Comparator.comparing(Map.Entry::getValue,Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        return movies;
+    }
+
+    private void getSimilarMovies(HashMap<Movie, Integer> filteredMovies, String[] vals) {
         HashMap<Movie,Integer> movieRatings = new HashMap<>();
         Movie movie;
         List<Review> reviews;
@@ -261,10 +249,11 @@ public class MovieBase {
                     standardDeviation = (int) Math.sqrt(movieReview.getReviewer().getReviews().stream().mapToInt(value ->(int) Math.pow(Math.abs( value.getScore()*100- finalUserAverageReviewScore),2)).sum()/movieReview.getReviewer().getReviews().size());
                     for(Review userReview:movieReviewerReviews){
                         reviewedMovie = userReview.getMovie();
+
                         if(userReview.getMovie()!=movie){
-                            if(!movieRatings.containsKey(reviewedMovie)){
-                                movieRatings.put(reviewedMovie,0);
-                            }
+
+                            filteredMovies.putIfAbsent(reviewedMovie,0);
+
                             if(userReview.getScore()*100<finalUserAverageReviewScore-(0.44*standardDeviation)){         //gets ~bottom 33% of Reviews
                                 addScore = 1;
                                 counter[0] +=1;
@@ -276,25 +265,16 @@ public class MovieBase {
                                 counter[2] +=1;
                             }
 
-                            newScore = movieRatings.get(reviewedMovie) + addScore;
-                            movieRatings.put(reviewedMovie,newScore);
+                            newScore = filteredMovies.get(reviewedMovie) + addScore;
+                            filteredMovies.put(reviewedMovie,newScore);
                         }
                     }
 
                 }
             }else{
-                System.out.println("Movie: "+s +" could not be found in database");
-                return null;
+                System.out.println("Movie: "+s +" could not be found in database. This error should not occure");
             }
         }
-
-        int maxValue = movieRatings.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getValue()+1; //+1 to maek any divison
-
-        for(Map.Entry<Movie, Integer> entry: movieRatings.entrySet()){
-            movieSetArr[2-(int) Math.floor(entry.getValue()*3/maxValue)].add(entry.getKey());
-        }
-
-        return movieSetArr;
     }
 
     private Movie getMovieByName(String s) {
@@ -316,6 +296,7 @@ public class MovieBase {
         Iterator it = moviesSplitted.listIterator();
 
         //deleting duplicates top down
+
         for (int i = 0; i < moviesSplitted.size()-1; i++) {
             currentArrEl = moviesSplitted.get(i);
 
