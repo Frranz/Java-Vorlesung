@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 public class Main {
     private static final String filepath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\movieproject.db";
+    private static final String userRatingsPath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\userRatings.txt";
 
     public static void main(String args[]){
         String[][] argsArr = new String[args.length][];
@@ -27,6 +28,8 @@ public class Main {
 
             List<Movie> movies = bs.getSuggestedMovies(argsArr);
             MovieBase.printMoviesList(movies);
+        }else{
+            interactiveMode(bs);
         }
 
         int count = 0;
@@ -34,6 +37,47 @@ public class Main {
             count += bs.getReviewer(s).getReviews().size();
         }
         System.out.printf("reviews: %d",count);
+    }
+
+    private static void interactiveMode(MovieBase bs) {
+        Scanner scanner = new Scanner(System.in);
+        boolean runLoop = true;
+        UserRatings userRatings = new UserRatings(userRatingsPath,bs);
+        ArrayList<Movie> movieList;
+
+        while(runLoop){
+            System.out.println("Willkommen in der Filmdatenbank");
+            System.out.println("================================\n");
+            System.out.println("Bitte wählen sie eine Option aus:");
+            System.out.println("[0] Filme bewerten");
+            System.out.println("[1] Empfehlungen ansehen");
+            System.out.println("[2] Film suchen");
+            try {
+                char c = (char) System.in.read();
+
+                switch(c){
+                    case '0':
+                        userRatings.newInteractive(bs);
+                        break;
+                    case '1':
+                        HashMap<Movie,Integer> movieMap = new HashMap<>();
+                        String[] movies = (String[]) userRatings.getReviews().stream().map(review -> review.getMovie().getTitle()).toArray(); // converts list to String array
+                        bs.getSimilarMovies(movieMap,movies);
+                        break;
+                    case '2':
+                        System.out.println("Bitte geben sie den zu suchenden Namen ein:");
+                        String input = scanner.next();
+                        movieList = (ArrayList<Movie>) bs.getMoviesWithSimilarTitle(input);
+                        outputListStepByStep(movieList,10);
+                        break;
+                    default:
+                        System.out.println("ungültige Eingabe. Versuchen Sie es erneut.");
+                }
+            } catch (IOException e) {
+                System.out.println("Zeichen konnte nicht eingelesen werden");
+                e.printStackTrace();
+            }
+        }
     }
 
     private static MovieBase createMovieBase(String path){
@@ -155,5 +199,25 @@ public class Main {
 
     public static void print(String s){
         System.out.println(s);
+    }
+
+    public static void outputListStepByStep(ArrayList<Movie> list, int stepSize ){
+        Scanner sc = new Scanner(System.in);
+        int sizeLeft = list.size();
+        int counter = 0;
+        while(sizeLeft>0){
+            counter = stepSize;
+            while(sizeLeft>0 && counter>0){
+                System.out.println(list.get(list.size()-sizeLeft));
+                counter--;
+                sizeLeft--;
+            }
+            if(sizeLeft>0){
+                System.out.println("Drücken Sie Enter für weiter Ergebnisse");
+                sc.nextLine();
+            }
+        }
+        System.out.println("Drücken sie Enter zum beenden");
+        sc.nextLine();
     }
 }

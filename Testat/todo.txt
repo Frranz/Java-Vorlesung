@@ -20,7 +20,7 @@ einzel arrays nach rating sortieren
 0,41 = 16,28%
 
 still not sure about suggestion algorithm
--> more sure about algorithm
+-> more sure about algorithm now
 
 limit max criteria points to 10 or something
 
@@ -29,3 +29,5 @@ allow minus values for film suggestion
 check if suggestion works
 
 uml aktualisierne
+
+input bei moviebaes zeile =>	349 wird ignoriert interkativer modus

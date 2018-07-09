@@ -11,6 +11,11 @@ public class Review {
         this.reviewer = reviewer;
     }
 
+    public Review(float score, Movie selectedMovie) {
+        this.score = score;
+        this.movie = movie;
+    }
+
     public Reviewer getReviewer() {
         return reviewer;
     }

@@ -201,8 +201,11 @@ public class MovieBase {
             }
             counter++;
         }
-
         retMovies = movieMapToSortedList(filteredMovies);
+
+        if(limit>0){
+            retMovies = retMovies.subList(0,limit);
+        }
 
         return retMovies;
     }
@@ -218,7 +221,7 @@ public class MovieBase {
         return movies;
     }
 
-    private void getSimilarMovies(HashMap<Movie, Integer> filteredMovies, String[] vals) {
+    public void getSimilarMovies(HashMap<Movie, Integer> filteredMovies, String[] vals) {
         HashMap<Movie,Integer> movieRatings = new HashMap<>();
         Movie movie;
         List<Review> reviews;
@@ -330,5 +333,31 @@ public class MovieBase {
         System.out.println(s);
     }
 
+    public List<Movie> getMoviesWithSimilarTitle(String input) {
+        List<Movie> movies = new ArrayList<>();
+        for(Movie m: getMovies()){
+            if(m.getTitle().contains(input)){
+                movies.add(m);
+            }
+        }
+        return movies;
+    }
+
+    public Movie selectMovieFromConsole(){
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Bitte geben Sie einen zu suchenden Titel ein");
+        String title = reader.nextLine();
+        List<Movie> movies = getMoviesWithSimilarTitle(title);
+
+        System.out.println("Bitte geben Sie den Index für den gewünschten Film ein.");
+
+        int counter = 0;
+        for(Movie m: movies){
+            System.out.println("("+counter+")"+m.toString());
+            counter ++;
+        }
+        int inpInt = reader.nextInt();
+        return movies.get(inpInt);
+    }
 }
 ;
