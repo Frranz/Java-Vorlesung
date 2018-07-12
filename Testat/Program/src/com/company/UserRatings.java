@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserRatings {
-    List<Review> reviews;
-    String filePath;
+    private List<Review> reviews;
+    private String filePath;
 
     public List<Review> getReviews() {
         return reviews;

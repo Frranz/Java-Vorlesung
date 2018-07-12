@@ -41,7 +41,6 @@ public class Review {
     }
 
     public String toString(){
-        String retStr = "Rating: "+this.score+" for Movie "+this.movie.getTitle();
-        return retStr;
+        return "Rating: "+ this.score+" for Movie "+ this.movie.getTitle();
     }
 }

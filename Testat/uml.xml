@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.2"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>510</x><y>0</y><w>270</w><h>160</h></coordinates><panel_attributes>/Human/
+<diagram version="14.2" program="umletino"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>670</x><y>0</y><w>270</w><h>160</h></coordinates><panel_attributes>/Human/
 -
 -id: int
 -name: string
@@ -7,89 +7,84 @@
 +getName(): string
 
 +setId(newId: int): void
-+setName(newName: string): string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>220</y><w>220</w><h>90</h></coordinates><panel_attributes>Actor
++setName(newName: string): string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>220</y><w>220</w><h>90</h></coordinates><panel_attributes>Actor
 -
 -actedMovies: ArrayList&lt;Movie&gt;
 -
 +addActedMovie(param: Movie): void
-+playsInMovie(param: Movie): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>220</y><w>250</w><h>90</h></coordinates><panel_attributes>Director
++playsInMovie(param: Movie): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>220</y><w>250</w><h>90</h></coordinates><panel_attributes>Director
 -
 -directedMovies: ArrayList&lt;Movie&gt;
 -
 +directsInMovie(param: Movie): boolean
-+addDirectedMovie(param: Movie): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>320</y><w>310</w><h>460</h></coordinates><panel_attributes>Movie
++addDirectedMovie(param: Movie): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1130</x><y>390</y><w>310</w><h>300</h></coordinates><panel_attributes>Movie
 -
 -id: int
 -title: string
 -plot: string
 -genre: string
--actors: ArrayList&lt;Actor&gt;
+-actors: List&lt;Actor&gt;
+-actorNames: List&lt;String&gt;
 -director: Director
 -release: Date
--reviews: ArrayList&lt;Review&gt;
+-reviews: List&lt;Review&gt;
 -reviewAmount: int
 -averageReviewScore: float
 -
-+getId(): int
-+getTitle(): string
-+getPlot(): string
-+getGenre(): string
-+getActors(): ArrayList&lt;Actor&gt;
-+getDirector(): Director
-+getRelease(): Date
-+getReviews(): ArrayList&lt;Review&gt;
-+getReviewAmount(): int
-+getAverageReviewScore(): float
++getter
 
-+setId(param: int): void
-+setTItle(param: String): void
-+setPlot(param: String): void
-+setGenre(param: String): void
-+setRelease(param: Date): void
-+setReviewAmount(param: int): void
-+setAverageReviewScore(param: float): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>840</y><w>250</w><h>180</h></coordinates><panel_attributes>Review
++addActor(a:Actor):void
++addActorName(s:String):void
++addReview(r:Review):void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>760</y><w>250</w><h>110</h></coordinates><panel_attributes>Review
 -
 -reviewer: Reviewer
 -score: float
 -movie: Movie
 -
-+getReviewer(): Reviewer
-+getScore(): float
-+getMovie(): Movie
-
-+setReviewer(param: Reviewer): void
-+setScore(param: float): void
-+setMovie(param: Movie): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>610</y><w>260</w><h>160</h></coordinates><panel_attributes>Reviewer
++getter + setter</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>610</y><w>260</w><h>110</h></coordinates><panel_attributes>Reviewer
 -
 -name: string
 -reviews: ArrayList&lt;Review&gt;
 -
-+getName(): string
-+getReviews(): ArrayList&lt;Review&gt;
-+getReviewOf(param: Movie): Review
-
-+setName(param: String): void
++getter + setter
 +addReview(param: Review): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>380</y><w>280</w><h>320</h></coordinates><panel_attributes>MovieBase
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>380</y><w>430</w><h>420</h></coordinates><panel_attributes>MovieBase
 -
 -id: int
--movies: ArrayList&lt;Movie&gt;
--actors: ArrayList&lt;Actor&gt;
--directors: ArrayList&lt;Director&gt;
--reviewers: ArrayList&lt;Reviewer&gt;
--reviews: ArrayList&lt;Review&gt;
+-movies: HashMap&lt;Integer,Movie&gt;
+-actors: HashMap&lt;Integer,Actor&gt;
+-directors: HashMap&lt;Integer,Director&gt;
+-reviewers: HashMap&lt;StringReviewer&gt;
+-reviews: LinkedList&lt;Review&gt;
 -
-+getId(): int
-+getMovies(): ArrayList&lt;Movie&gt;
-+getActors(): ArrayList&lt;Actor&gt;
-+getDirectors(): ArrayList&lt;Director&gt;
-+getReviews(): ArrayList&lt;Review&gt;
-+getReviewers(): -reviewers: ArrayList&lt;Reviewer&gt;
++getter
++getActorById(param:int):Actor
++getMovieByName(s:String):Movie
 
 +setId(param: int): void
 +addMovie(param: Movie): void
 +addActor(param: Actor): void
 +addDirector(param Director): void
 +addReview(param: Review): void
-+addReviewer(param: Reviewer): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>760</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>150</y><w>120</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>100;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>150</y><w>140</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;120;70</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>680</y><w>180</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>610</y><w>250</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;230;90</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>650</y><w>260</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;240;260</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>550</y><w>660</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;640;10</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>300</y><w>490</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;220;470;10</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>300</y><w>200</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;170;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>300</y><w>140</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>120;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>300</y><w>490</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>470;180;10;10</additional_attributes></element></diagram>
++addReviewer(param: Reviewer): void
+
++printMoviesList(m:List&lt;Movie&gt;): void
+
++getSuggestedMovies(sArr: String[][]): List&lt;Movie&gt;
++getSimilarMovies(h: HashMap&lt;Movie,Integer&gt;, sArr: String[]): void
++getMoviesWithSimilarTitle(s:String): List&lt;Movie&gt;
++selectMovieFromConsole(): void
+-filterByListAttribute(h: HashMap&lt;Movie,Integer&gt;,s:String,sArr:String[]):: void
+-movieMapToSortedList(h: HashMap&lt;Movie,Integer): List&lt;Movie&gt;
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>710</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>150</y><w>120</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>100;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>150</y><w>140</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;120;70</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>680</y><w>190</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>610</y><w>200</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;90</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>650</y><w>200</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;180</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>570</y><w>620</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;600;10</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>300</y><w>440</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;220;420;10</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>300</y><w>150</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;170;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1000</x><y>300</y><w>150</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;180;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>300</y><w>500</w><h>270</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>480;250;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1130</x><y>760</y><w>300</w><h>110</h></coordinates><panel_attributes>UserRatings
+-
+-reviews: List&lt;Review&gt;
+-filePath: String
+-
++addReview(r:Review): void
++newReviewInteractive(mb:MovieBase): void
++getter + setter</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>820</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element></diagram>

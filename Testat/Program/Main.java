@@ -25,6 +25,7 @@ public class Main {
                 System.out.println("Testmodus wurde gestartet");
                 test(bs);
             } else {
+
                 //"normaler" statischer Modus
                 int counter = 0;
                 for (String s : args) {
