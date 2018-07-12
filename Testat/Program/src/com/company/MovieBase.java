@@ -203,7 +203,7 @@ public class MovieBase {
         }
         retMovies = movieMapToSortedList(filteredMovies);
 
-        if(limit>0){
+        if(limit>0 && retMovies.size()>limit){
             retMovies = retMovies.subList(0,limit);
         }
 
@@ -217,7 +217,6 @@ public class MovieBase {
                 .sorted(Comparator.comparing(Map.Entry::getValue,Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
-
         return movies;
     }
 
@@ -258,13 +257,13 @@ public class MovieBase {
                             filteredMovies.putIfAbsent(reviewedMovie,0);
 
                             if(userReview.getScore()*100<finalUserAverageReviewScore-(0.44*standardDeviation)){         //gets ~bottom 33% of Reviews
-                                addScore = 1;
+                                addScore = -1;
                                 counter[0] +=1;
                             }else if(userReview.getScore()*100<finalUserAverageReviewScore+(0.43*standardDeviation)){   //gets ~middle 33% of Reviews
-                                addScore = 2;
+                                addScore = 1;
                                 counter[1] +=1;
                             }else{                                                                                      //gets ~top 33% of Reviews
-                                addScore = 3;
+                                addScore = 2;
                                 counter[2] +=1;
                             }
 
@@ -350,14 +349,18 @@ public class MovieBase {
         List<Movie> movies = getMoviesWithSimilarTitle(title);
 
         System.out.println("Bitte geben Sie den Index für den gewünschten Film ein.");
-
-        int counter = 0;
-        for(Movie m: movies){
-            System.out.println("("+counter+")"+m.toString());
-            counter ++;
+        if(movies.size()>0){
+            int counter = 0;
+            for(Movie m: movies){
+                System.out.println("("+counter+")"+m.toString());
+                counter ++;
+            }
+            int inpInt = reader.nextInt();
+            return movies.get(inpInt);
+        }else{
+            return null;
         }
-        int inpInt = reader.nextInt();
-        return movies.get(inpInt);
+
     }
 }
 ;

@@ -1,11 +1,9 @@
 import src.com.company.*;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -18,32 +16,35 @@ public class Main {
         MovieBase bs = createMovieBase(filepath);
         System.out.println("Moviedatenbank wurde fertig geladen...");
 
-        if(args.length>0){
-            int counter = 0;
-            for(String s:args){
-                s = s.substring(2);
-                argsArr[counter] = s.split("=");
-                counter++;
-            }
 
-            List<Movie> movies = bs.getSuggestedMovies(argsArr);
-            MovieBase.printMoviesList(movies);
+
+        if(args.length>0) {
+            if (args[0].equals("--test=true")) {
+                System.out.println("Testmodus wurde gestartet");
+                test(bs);
+            } else {
+                int counter = 0;
+                for (String s : args) {
+                    s = s.substring(2);
+                    argsArr[counter] = s.split("=");
+                    counter++;
+                }
+
+                List<Movie> movies = bs.getSuggestedMovies(argsArr);
+                MovieBase.printMoviesList(movies);
+            }
         }else{
             interactiveMode(bs);
         }
-
-        int count = 0;
-        for(String s: bs.getReviewers().keySet()){
-            count += bs.getReviewer(s).getReviews().size();
-        }
-        System.out.printf("reviews: %d",count);
     }
 
     private static void interactiveMode(MovieBase bs) {
         Scanner scanner = new Scanner(System.in);
         boolean runLoop = true;
         UserRatings userRatings = new UserRatings(userRatingsPath,bs);
+        List<Movie> movies;
         ArrayList<Movie> movieList;
+        int maxOutput;
 
         while(runLoop){
             System.out.println("Willkommen in der Filmdatenbank");
@@ -52,30 +53,48 @@ public class Main {
             System.out.println("[0] Filme bewerten");
             System.out.println("[1] Empfehlungen ansehen");
             System.out.println("[2] Film suchen");
-            try {
-                char c = (char) System.in.read();
+            System.out.println("[3] Bewertungen anzeigen");
+            System.out.println("[4] Interaktiven Modus beenden");
 
-                switch(c){
-                    case '0':
-                        userRatings.newInteractive(bs);
-                        break;
-                    case '1':
-                        HashMap<Movie,Integer> movieMap = new HashMap<>();
-                        String[] movies = (String[]) userRatings.getReviews().stream().map(review -> review.getMovie().getTitle()).toArray(); // converts list to String array
-                        bs.getSimilarMovies(movieMap,movies);
-                        break;
-                    case '2':
-                        System.out.println("Bitte geben sie den zu suchenden Namen ein:");
-                        String input = scanner.next();
-                        movieList = (ArrayList<Movie>) bs.getMoviesWithSimilarTitle(input);
-                        outputListStepByStep(movieList,10);
-                        break;
-                    default:
-                        System.out.println("ungültige Eingabe. Versuchen Sie es erneut.");
-                }
-            } catch (IOException e) {
-                System.out.println("Zeichen konnte nicht eingelesen werden");
-                e.printStackTrace();
+            int c = scanner.nextInt();
+
+            switch(c){
+                case 0:
+                    userRatings.newReviewInteractive(bs);
+                    break;
+                case 1:
+                    System.out.println("Wie viele Filme sollen maximal ausgegeben werden?");
+                    maxOutput = scanner.nextInt();
+                    HashMap<Movie,Integer> movieMap = new HashMap<>();
+                    String[] moviesArr = (String[]) userRatings.getReviews().stream().map(review -> review.getMovie().getTitle()).toArray(String[]::new); // converts list to String array
+                    bs.getSimilarMovies(movieMap,moviesArr);
+                    movies = movieMap.entrySet().stream()
+                            .sorted(Comparator.comparing(Map.Entry::getValue,Comparator.reverseOrder()))
+                            .map(Map.Entry::getKey)
+                            .collect(Collectors.toList());
+                    if(movies.size()>maxOutput){
+                        movies = movies.subList(0,maxOutput);
+                    }
+                    movieList =  new ArrayList<>(movies);
+
+                    outputListStepByStep(movieList,10);
+                    break;
+                case 2:
+                    System.out.println("Bitte geben sie den zu suchenden Namen ein:");
+                    String input = scanner.next();
+                    movieList = (ArrayList<Movie>) bs.getMoviesWithSimilarTitle(input);
+                    outputListStepByStep(movieList,10);
+                    break;
+                case 3:
+                    System.out.println(userRatings.getReviews());
+                    System.out.println("Ausgabe beendet. Enter drücken zum fortfahren");
+                    scanner.nextLine();
+                    break;
+                case 4:
+                    runLoop = false;
+                    break;
+                default:
+                    System.out.println("ungültige Eingabe. Versuchen Sie es erneut.");
             }
         }
     }
@@ -219,5 +238,69 @@ public class Main {
         }
         System.out.println("Drücken sie Enter zum beenden");
         sc.nextLine();
+    }
+
+    private static void test(MovieBase bs){
+        String testPath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\test.txt";
+        try {
+            Writer output = new BufferedWriter(new FileWriter(testPath));
+            List<Movie> movies;
+            String[][] argsArr = {{"genre","Thriller"},{"movie","Indiana Jones"},{"limit","10"}};
+
+            System.out.println("test with following args: "+get2dArrayAsString(argsArr));
+            output.append("testing with following args: ");
+            output.append(get2dArrayAsString(argsArr));
+            ((BufferedWriter) output).newLine();
+            movies = bs.getSuggestedMovies(argsArr);
+            for(Movie m: movies){
+                output.append(m.toString());
+                ((BufferedWriter) output).newLine();
+            }
+
+            argsArr = new String[][]{{"film", "Indiana Jones and the temple of doom"}, {"genre", "adventure"},{"limit","15"}};
+            System.out.println("test with following args: "+get2dArrayAsString(argsArr));
+            ((BufferedWriter) output).newLine();
+            output.append("testing with following args: ");
+            output.append(get2dArrayAsString(argsArr));
+            ((BufferedWriter) output).newLine();
+            movies = bs.getSuggestedMovies(argsArr);
+            for(Movie m: movies){
+                output.append(m.toString());
+                ((BufferedWriter) output).newLine();
+            }
+
+            argsArr = new String[][]{{"actor", "Jason Statham,Keanu Reeves"}, {"genre","action"},{"limit","50"}};
+            System.out.println("testing with following args: "+get2dArrayAsString(argsArr));
+            ((BufferedWriter) output).newLine();
+            output.append("testing with following args: ");
+            output.append(get2dArrayAsString(argsArr));
+            ((BufferedWriter) output).newLine();
+            movies = bs.getSuggestedMovies(argsArr);
+            for(Movie m: movies){
+                output.append(m.toString());
+                ((BufferedWriter) output).newLine();
+            }
+            System.out.println("Tests ended successfully");
+            ((BufferedWriter) output).newLine();
+            output.append("Test ended succesfully");
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private static String get2dArrayAsString(String[][] sArr2d){
+        StringBuilder sBuilder = new StringBuilder();
+
+        for(String[] sArr: sArr2d){
+            sBuilder.append(sArr[0]);
+            sBuilder.append(":");
+            sBuilder.append(sArr[1]);
+            sBuilder.append(" | ");
+        }
+
+        return sBuilder.toString();
     }
 }

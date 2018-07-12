@@ -8,6 +8,8 @@ public class Director extends Human{
 
     public Director(String line) {
         directedMovies = new LinkedList<>();
+
+        //splits database entry to relevant contents
         String[] lineSplit = line.substring(1,line.length()-1).split("\",\"");
         if(lineSplit.length != 2){
             System.out.println("komischer Datensatz: "+line);

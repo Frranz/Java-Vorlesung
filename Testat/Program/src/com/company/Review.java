@@ -13,7 +13,7 @@ public class Review {
 
     public Review(float score, Movie selectedMovie) {
         this.score = score;
-        this.movie = movie;
+        this.movie = selectedMovie;
     }
 
     public Reviewer getReviewer() {
@@ -38,5 +38,10 @@ public class Review {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    public String toString(){
+        String retStr = "Rating: "+this.score+" for Movie "+this.movie.getTitle();
+        return retStr;
     }
 }
