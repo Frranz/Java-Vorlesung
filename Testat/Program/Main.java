@@ -2,6 +2,7 @@ import src.com.company.*;
 
 import java.io.*;
 import java.nio.file.Path;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -9,6 +10,7 @@ import java.util.stream.Stream;
 public class Main {
     private static final String filepath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\movieproject.db";
     private static final String userRatingsPath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\userRatings.txt";
+    private static final String testPath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\test.txt";
 
     public static void main(String args[]){
         String[][] argsArr = new String[args.length][];
@@ -23,6 +25,7 @@ public class Main {
                 System.out.println("Testmodus wurde gestartet");
                 test(bs);
             } else {
+                //"normaler" statischer Modus
                 int counter = 0;
                 for (String s : args) {
                     s = s.substring(2);
@@ -65,11 +68,13 @@ public class Main {
                 case 1:
                     System.out.println("Wie viele Filme sollen maximal ausgegeben werden?");
                     maxOutput = scanner.nextInt();
-                    HashMap<Movie,Integer> movieMap = new HashMap<>();
-                    String[] moviesArr = (String[]) userRatings.getReviews().stream().map(review -> review.getMovie().getTitle()).toArray(String[]::new); // converts list to String array
-                    bs.getSimilarMovies(movieMap,moviesArr);
+                    HashMap<Movie, Integer> movieMap = new HashMap<>();
+
+                    // converts list to String array
+                    String[] moviesArr = userRatings.getReviews().stream().map(review -> review.getMovie().getTitle()).toArray(String[]::new);
+                    bs.getSimilarMovies(movieMap, moviesArr);
                     movies = movieMap.entrySet().stream()
-                            .sorted(Comparator.comparing(Map.Entry::getValue,Comparator.reverseOrder()))
+                            .sorted(Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()))
                             .map(Map.Entry::getKey)
                             .collect(Collectors.toList());
                     if(movies.size()>maxOutput){
@@ -86,8 +91,11 @@ public class Main {
                     outputListStepByStep(movieList,10);
                     break;
                 case 3:
-                    System.out.println(userRatings.getReviews());
+                    for(Review r:userRatings.getReviews()){
+                        System.out.println(r);
+                    }
                     System.out.println("Ausgabe beendet. Enter drücken zum fortfahren");
+                    scanner.nextLine();
                     scanner.nextLine();
                     break;
                 case 4:
@@ -143,6 +151,7 @@ public class Main {
                             throw new FileValidityException("unhandled Entity:" + line);
                     }
                 }else{
+                    //mode is current type of datasets
                     switch(mode){
                         case "actorIdToName":
                             actor = new Actor(line);
@@ -227,6 +236,7 @@ public class Main {
         while(sizeLeft>0){
             counter = stepSize;
             while(sizeLeft>0 && counter>0){
+                //list.size() - sizeLeft = int for next output => changes from beginning to end of list
                 System.out.println(list.get(list.size()-sizeLeft));
                 counter--;
                 sizeLeft--;
@@ -241,17 +251,25 @@ public class Main {
     }
 
     private static void test(MovieBase bs){
-        String testPath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\test.txt";
         try {
             Writer output = new BufferedWriter(new FileWriter(testPath));
             List<Movie> movies;
             String[][] argsArr = {{"genre","Thriller"},{"movie","Indiana Jones"},{"limit","10"}};
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+            output.append("Test from: ");
+            output.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));
+            ((BufferedWriter) output).newLine();
+            ((BufferedWriter) output).newLine();
+
 
             System.out.println("test with following args: "+get2dArrayAsString(argsArr));
             output.append("testing with following args: ");
             output.append(get2dArrayAsString(argsArr));
             ((BufferedWriter) output).newLine();
             movies = bs.getSuggestedMovies(argsArr);
+
+            //prints movies in list to file
             for(Movie m: movies){
                 output.append(m.toString());
                 ((BufferedWriter) output).newLine();
@@ -264,6 +282,8 @@ public class Main {
             output.append(get2dArrayAsString(argsArr));
             ((BufferedWriter) output).newLine();
             movies = bs.getSuggestedMovies(argsArr);
+
+            //prints movies in list to file
             for(Movie m: movies){
                 output.append(m.toString());
                 ((BufferedWriter) output).newLine();
@@ -276,6 +296,8 @@ public class Main {
             output.append(get2dArrayAsString(argsArr));
             ((BufferedWriter) output).newLine();
             movies = bs.getSuggestedMovies(argsArr);
+
+            //prints movies in list to file
             for(Movie m: movies){
                 output.append(m.toString());
                 ((BufferedWriter) output).newLine();

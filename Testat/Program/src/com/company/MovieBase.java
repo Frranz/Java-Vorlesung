@@ -96,19 +96,12 @@ public class MovieBase {
         return someMovies;
     }
 
-    public static List<Movie> filterMoviesByGenre(List<Movie> movies,String genre){
-        for(Movie m:movies){
-            if(!m.getGenre().contains(genre)){
-                movies.remove(m);
-            }
-        }
-        return movies;
-    }
-
     private void filterByListAttribute(HashMap<Movie, Integer> filteredMovies, String filterKey, String[] vals){
         Director director;
         Iterator<Movie> iterator = getMovies().iterator();
         Movie m;
+
+        //filter counter gets up by 1 for every time some filter is hit
         int filterCounter = 0;
         int counter = 0;
         while(iterator.hasNext()){
@@ -167,7 +160,6 @@ public class MovieBase {
         String[] vals;
         HashMap<Movie,Integer> filteredMovies = new HashMap<>();
         List<Movie> retMovies;
-        int counter = 0;
         int limit = 0;
 
         boolean containsFilter;
@@ -199,7 +191,6 @@ public class MovieBase {
                 default:
                     print("Komisches Argument" + s[0]);
             }
-            counter++;
         }
         retMovies = movieMapToSortedList(filteredMovies);
 
@@ -211,7 +202,7 @@ public class MovieBase {
     }
 
     private List<Movie> movieMapToSortedList(HashMap<Movie,Integer> filteredMovies) {
-        List<Movie> movies = new LinkedList<>();
+        List<Movie> movies;
 
         movies = filteredMovies.entrySet().stream()
                 .sorted(Comparator.comparing(Map.Entry::getValue,Comparator.reverseOrder()))
@@ -246,9 +237,13 @@ public class MovieBase {
 //
                 for(Review movieReview: reviews){
                     movieReviewerReviews = movieReview.getReviewer().getReviews();
+
+                    /*  calculate average Review score and standard Deviation
+                    *   to find bottom, middle and top 1/3 of their reviews     */
                     userAverageReviewScore = movieReviewerReviews.stream().mapToInt(value -> (int) value.getScore()*100).sum()/movieReviewerReviews.size(); //get average review score of certain reviewer for normalization
                     int finalUserAverageReviewScore = userAverageReviewScore;
                     standardDeviation = (int) Math.sqrt(movieReview.getReviewer().getReviews().stream().mapToInt(value ->(int) Math.pow(Math.abs( value.getScore()*100- finalUserAverageReviewScore),2)).sum()/movieReview.getReviewer().getReviews().size());
+
                     for(Review userReview:movieReviewerReviews){
                         reviewedMovie = userReview.getMovie();
 
@@ -274,7 +269,7 @@ public class MovieBase {
 
                 }
             }else{
-                System.out.println("Movie: "+s +" could not be found in database. This error should not occure");
+                System.out.println("Movie: "+s +" could not be found in database. This error should not occure. Something went really really wrong here");
             }
         }
     }
@@ -286,46 +281,6 @@ public class MovieBase {
             }
         }
         return null;
-    }
-
-    private List<Movie> filterTopDownDuplicates(List<HashSet<Movie>[]> moviesSplitted) {
-        List<Movie> movies = new LinkedList<>();
-        HashSet<Movie>[] currentArrEl;
-        HashSet<Movie> currentSet;
-        HashSet<Movie>[] runnerArrEl;
-        HashSet<Movie> runnerSet;
-
-        Iterator it = moviesSplitted.listIterator();
-
-        //deleting duplicates top down
-
-        for (int i = 0; i < moviesSplitted.size()-1; i++) {
-            currentArrEl = moviesSplitted.get(i);
-
-            for(HashSet<Movie> hsm: currentArrEl){
-                for(Movie m:hsm){
-                    for (int j = i+1; j < moviesSplitted.size(); j++) {
-                        runnerArrEl = moviesSplitted.get(j);
-                        for (int k = 0; k < runnerArrEl.length; k++) {
-                            runnerSet = runnerArrEl[i];
-                            if(runnerSet.contains(m)){
-                                moviesSplitted.get(j)[k].remove(m);
-                            }
-                        }
-                    }
-                }
-            }
-
-
-        }
-
-        for(HashSet<Movie>[] hsa: moviesSplitted){
-            for(HashSet<Movie>hs: hsa){
-                movies.addAll(hs);
-            }
-        }
-
-        return movies;
     }
 
     public static void print(String s){

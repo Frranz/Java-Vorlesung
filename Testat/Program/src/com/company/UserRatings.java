@@ -16,8 +16,9 @@ public class UserRatings {
     public void addReview(Review r){
         reviews.add(r);
         try {
-            Writer output = new BufferedWriter(new FileWriter(this.filePath));
-            String write = "\""+r.getMovie().getId()+"\",\""+r.getScore()+"\"";
+            //add new userRating to userRatings.txt
+            Writer output = new BufferedWriter(new FileWriter(this.filePath,true));
+            String write = "\""+r.getMovie().getId()+"\",\""+r.getScore()+"\"\n";
             output.append(write);
             output.close();
         } catch (IOException e) {
@@ -33,6 +34,7 @@ public class UserRatings {
         String[] lineSplit;
 
         try {
+            //import userRatings from userRatings.txt
             BufferedReader br = new BufferedReader(new FileReader(path));
             String line = br.readLine();
 
@@ -55,7 +57,6 @@ public class UserRatings {
     public void newReviewInteractive(MovieBase mb) {
         boolean runLoop = true;
         Scanner reader = new Scanner(System.in);
-        String inp;
         float score = -1;
         Movie selectedMovie = mb.selectMovieFromConsole();
 

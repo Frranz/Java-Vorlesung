@@ -24,12 +24,14 @@ public class Movie{
         reviews = new LinkedList<>();
         genre = new LinkedList<>();
 
+        //splits database entry to relevant contents
         String[] lineSplit = line.substring(1,line.length()-1).split("\",\"");
         id = Integer.valueOf(lineSplit[0]);
         title = lineSplit[1];
         plot = lineSplit[2];
         genre.add(lineSplit[3]);
 
+        //some entries dont exist all the time => checking is for those
         if(lineSplit.length > 4 && lineSplit[4]!=null){
             release = lineSplit[4];
         }
