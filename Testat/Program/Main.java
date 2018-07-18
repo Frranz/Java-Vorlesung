@@ -15,7 +15,8 @@ public class Main {
     public static void main(String args[]){
         String[][] argsArr = new String[args.length][];
         System.out.println("Moviedatenbank wird geladen...");
-        MovieBase bs = createMovieBase(filepath);
+        MovieBase bs = new MovieBase(filepath);
+  //      MovieBase bs = createMovieBase(filepath);
         System.out.println("Moviedatenbank wurde fertig geladen...");
 
 
@@ -60,13 +61,15 @@ public class Main {
             System.out.println("[3] Bewertungen anzeigen");
             System.out.println("[4] Interaktiven Modus beenden");
 
-            int c = scanner.nextInt();
+            String c = scanner.nextLine();
 
             switch(c){
-                case 0:
+                case "0":
+                    //rate movie
                     userRatings.newReviewInteractive(bs);
                     break;
-                case 1:
+                case "1":
+                    //see recommendations
                     System.out.println("Wie viele Filme sollen maximal ausgegeben werden?");
                     maxOutput = scanner.nextInt();
                     HashMap<Movie, Integer> movieMap = new HashMap<>();
@@ -85,21 +88,23 @@ public class Main {
 
                     outputListStepByStep(movieList,10);
                     break;
-                case 2:
+                case "2":
+                    //search by name
                     System.out.println("Bitte geben sie den zu suchenden Namen ein:");
-                    String input = scanner.next();
+                    String input = scanner.nextLine();
                     movieList = (ArrayList<Movie>) bs.getMoviesWithSimilarTitle(input);
                     outputListStepByStep(movieList,10);
                     break;
-                case 3:
+                case "3":
+                    //see user reviews
                     for(Review r:userRatings.getReviews()){
                         System.out.println(r);
                     }
                     System.out.println("Ausgabe beendet. Enter drücken zum fortfahren");
                     scanner.nextLine();
-                    scanner.nextLine();
                     break;
-                case 4:
+                case "4":
+                    //exit interactive menu
                     runLoop = false;
                     break;
                 default:
@@ -108,129 +113,7 @@ public class Main {
         }
     }
 
-    private static MovieBase createMovieBase(String path){
-        MovieBase mb = new MovieBase();
-        String genre;
-        Actor actor;
-        Movie movie;
-        Director director;
-        Review review;
-        Reviewer reviewer;
-        int counter = 0;
-
-        String[] lineSplit;
-        try {
-            String mode="";
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            String line = br.readLine();
-
-
-            while(line!=null){
-//                System.out.println(counter++);
-                if(line.length()>13&& line.substring(0,12).equals("New_Entity: ")){
-                    switch(line){
-                        case "New_Entity: \"actor_id\",\"actor_name\"":
-                            mode = "actorIdToName";
-                            break;
-                        case "New_Entity: \"movie_id\",\"movie_title\",\"movie_plot\",\"genre_name\",\"movie_released\",\"movie_imdbVotes\",\"movie_imdbRating\"":
-                            mode = "movie";
-                            break;
-                        case "New_Entity: \"director_id\",\"director_name\"":
-                            mode = "directorIdToName";
-                            break;
-                        case "New_Entity: \"actor_id\",\"movie_id\"":
-                            mode = "actorIdToMovieId";
-                            break;
-                        case "New_Entity: \"director_id\",\"movie_id\"":
-                            mode = "directorIdToMovieId";
-                            break;
-                        case "New_Entity: \"user_name\",\"rating\",\"movie_id\"":
-                            mode = "review";
-                            break;
-                        default:
-                            System.out.println("Unknown Entity");
-                            throw new FileValidityException("unhandled Entity:" + line);
-                    }
-                }else{
-                    //mode is current type of datasets
-                    switch(mode){
-                        case "actorIdToName":
-                            actor = new Actor(line);
-                            mb.addActor(actor);
-                            break;
-                        case "movie":
-                            movie = mb.getMovieById(Integer.parseInt(line.substring(1,line.length()-1).split("\",\"")[0]));
-                            if(movie==null){  //wenn Film mit id bereits existiert
-                                movie = new Movie(line);
-                                mb.addMovie(movie);
-                            }else{
-                                genre = line.substring(1,line.length()-1).split("\",\"")[3];
-                                movie.addGenre(genre);
-                            }
-                            break;
-                        case "directorIdToName":
-                            director = new Director(line);
-                            mb.addDirector(director);
-                            break;
-                        case "actorIdToMovieId":
-                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
-                            actor = mb.getActorById(Integer.parseInt(lineSplit[0]));
-                            movie = mb.getMovieById(Integer.parseInt(lineSplit[1]));
-                            if(movie!=null && actor!=null){
-                                actor.addActedMovie(movie);
-                                movie.addActors(actor);
-                                movie.addActorName(actor.getName());
-                            }else{
-                                System.out.println("movie or actor null in line: "+line);
-                            }
-                            break;
-                        case "directorIdToMovieId":
-                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
-                            director = mb.getDirectorById(Integer.parseInt(lineSplit[0]));
-                            movie = mb.getMovieById(Integer.parseInt(lineSplit[1]));
-                            if(director!=null && movie!=null){
-                                director.addDirectedMovie(movie);
-                                movie.setDirector(director);
-                            }else{
-                                System.out.println("director or movie null in line: "+line);
-                            }
-
-                            break;
-                        case "review":
-                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
-                            reviewer = mb.getReviewer(lineSplit[0]);
-                            if(reviewer == null){
-                                reviewer = new Reviewer(lineSplit[0]);
-                            }
-                            mb.addReviewer(reviewer);
-                            movie = mb.getMovieById(Integer.parseInt(lineSplit[2]));
-                            if(movie!=null){
-                                review = new Review(Float.parseFloat(lineSplit[1]),movie,reviewer);
-                                reviewer.addReview(review);
-                                movie.addReview(review);
-                                mb.addReview(review);
-                            }else{
-                                System.out.println("movie null in line: "+line);
-                            }
-                            break;
-                    }
-                }
-
-
-                line = br.readLine();
-            }
-        } catch (FileValidityException | IOException e) {
-            e.printStackTrace();
-        }
-
-        return mb;
-    }
-
-    public static void print(String s){
-        System.out.println(s);
-    }
-
-    public static void outputListStepByStep(ArrayList<Movie> list, int stepSize ){
+    private static void outputListStepByStep(ArrayList<Movie> list, int stepSize ){
         Scanner sc = new Scanner(System.in);
         int sizeLeft = list.size();
         int counter = 0;
@@ -256,7 +139,6 @@ public class Main {
             Writer output = new BufferedWriter(new FileWriter(testPath));
             List<Movie> movies;
             String[][] argsArr = {{"genre","Thriller"},{"movie","Indiana Jones"},{"limit","10"}};
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
             output.append("Test from: ");
             output.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));

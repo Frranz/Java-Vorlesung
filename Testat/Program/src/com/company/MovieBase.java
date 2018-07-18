@@ -1,5 +1,8 @@
 package src.com.company;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -316,6 +319,128 @@ public class MovieBase {
             return null;
         }
 
+    }
+
+    public MovieBase(String path){
+        movies = new HashMap<>();
+        actors = new HashMap<>();
+        directors = new HashMap<>();
+        reviewers = new HashMap<>();
+        reviews = new LinkedList<>();
+        
+        String genre;
+        Actor actor;
+        Movie movie;
+        Director director;
+        Review review;
+        Reviewer reviewer;
+        int counter = 0;
+
+        String[] lineSplit;
+        try {
+            String mode="";
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            String line = br.readLine();
+
+
+            while(line!=null){
+
+                //get type of following datasets
+                if(line.length()>13&& line.substring(0,12).equals("New_Entity: ")){
+                    switch(line){
+                        case "New_Entity: \"actor_id\",\"actor_name\"":
+                            mode = "actorIdToName";
+                            break;
+                        case "New_Entity: \"movie_id\",\"movie_title\",\"movie_plot\",\"genre_name\",\"movie_released\",\"movie_imdbVotes\",\"movie_imdbRating\"":
+                            mode = "movie";
+                            break;
+                        case "New_Entity: \"director_id\",\"director_name\"":
+                            mode = "directorIdToName";
+                            break;
+                        case "New_Entity: \"actor_id\",\"movie_id\"":
+                            mode = "actorIdToMovieId";
+                            break;
+                        case "New_Entity: \"director_id\",\"movie_id\"":
+                            mode = "directorIdToMovieId";
+                            break;
+                        case "New_Entity: \"user_name\",\"rating\",\"movie_id\"":
+                            mode = "review";
+                            break;
+                        default:
+                            System.out.println("Unknown Entity");
+                            throw new FileValidityException("unhandled Entity:" + line);
+                    }
+                }else{
+                    //mode is current type of datasets
+                    switch(mode){
+                        case "actorIdToName":
+                            actor = new Actor(line);
+                            addActor(actor);
+                            break;
+                        case "movie":
+                            movie = getMovieById(Integer.parseInt(line.substring(1,line.length()-1).split("\",\"")[0]));
+                            if(movie==null){  //wenn Film mit id bereits existiert
+                                movie = new Movie(line);
+                                addMovie(movie);
+                            }else{
+                                genre = line.substring(1,line.length()-1).split("\",\"")[3];
+                                movie.addGenre(genre);
+                            }
+                            break;
+                        case "directorIdToName":
+                            director = new Director(line);
+                            addDirector(director);
+                            break;
+                        case "actorIdToMovieId":
+                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
+                            actor = getActorById(Integer.parseInt(lineSplit[0]));
+                            movie = getMovieById(Integer.parseInt(lineSplit[1]));
+                            if(movie!=null && actor!=null){
+                                actor.addActedMovie(movie);
+                                movie.addActors(actor);
+                                movie.addActorName(actor.getName());
+                            }else{
+                                System.out.println("movie or actor null in line: "+line);
+                            }
+                            break;
+                        case "directorIdToMovieId":
+                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
+                            director = getDirectorById(Integer.parseInt(lineSplit[0]));
+                            movie = getMovieById(Integer.parseInt(lineSplit[1]));
+                            if(director!=null && movie!=null){
+                                director.addDirectedMovie(movie);
+                                movie.setDirector(director);
+                            }else{
+                                System.out.println("director or movie null in line: "+line);
+                            }
+
+                            break;
+                        case "review":
+                            lineSplit = line.substring(1,line.length()-1).split("\",\"");
+                            reviewer = getReviewer(lineSplit[0]);
+                            if(reviewer == null){
+                                reviewer = new Reviewer(lineSplit[0]);
+                            }
+                            addReviewer(reviewer);
+                            movie = getMovieById(Integer.parseInt(lineSplit[2]));
+                            if(movie!=null){
+                                review = new Review(Float.parseFloat(lineSplit[1]),movie,reviewer);
+                                reviewer.addReview(review);
+                                movie.addReview(review);
+                                addReview(review);
+                            }else{
+                                System.out.println("movie null in line: "+line);
+                            }
+                            break;
+                    }
+                }
+
+
+                line = br.readLine();
+            }
+        } catch (FileValidityException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 ;

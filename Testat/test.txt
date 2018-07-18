@@ -1,16 +1,16 @@
-Test from: 2018-07-12 19:12:35.713
+Test from: 2018-07-16 16:22:44.908
 
 testing with following args: genre:Thriller | movie:Indiana Jones | limit:10 | 
-Film 667 rating: 6.0 Cable Guy, The Genre: [Comedy, Thriller] director: Ben Stiller
-Film 4330 rating: 4.8 Truth About Charlie, The Genre: [Thriller, Mystery] director: Jonathan Demme
-Film 4364 rating: 6.8 Scanners Genre: [Thriller, Horror, Sci-Fi] director: David Cronenberg
-Film 6859 rating: 7.2 I Am Legend Genre: [Action, Thriller, Horror, Sci-Fi, IMAX] director: Francis Lawrence
-Film 2480 rating: 5.3 Poison Ivy Genre: [Drama, Thriller] director: Katt Shea
-Film 2604 rating: 5.5 Vampyros Lesbos (Vampiras, Las) Genre: [Fantasy, Thriller, Horror] director: Jesús Franco
-Film 1705 rating: 5.9 Snake Eyes Genre: [Action, Crime, Thriller, Mystery] director: Brian De Palma
-Film 6777 rating: 7.1 Kingdom, The Genre: [Drama, Action, Thriller] director: Peter Berg
-Film 7305 rating: 8.0 District 9 Genre: [Thriller, Mystery, Sci-Fi] director: Neill Blomkamp
-Film 7929 rating: 6.9 Martha Marcy May Marlene Genre: [Drama, Thriller] director: Sean Durkin
+Film 569 rating: 7.7 Primal Fear Genre: [Drama, Crime, Thriller, Mystery] director: Gregory Hoblit
+Film 4220 rating: 6.0 Snipes Genre: [Drama, Thriller] director: Rich Murray
+Film 4246 rating: 6.2 Trapped Genre: [Action, Thriller] director: Luis Mandoki
+Film 6781 rating: 6.3 War Genre: [Action, Thriller] director: Philip G. Atwell
+Film 2393 rating: 8.9 Fight Club Genre: [Drama, Action, Crime, Thriller] director: David Fincher
+Film 2434 rating: 7.9 Insider, The Genre: [Drama, Thriller] director: Michael Mann
+Film 1569 rating: 5.5 Prom Night II Genre: [Thriller, Horror] director: Bruce Pittman
+Film 6716 rating: 6.5 Day Watch (Dnevnoy dozor) Genre: [Fantasy, Action, Thriller, Horror] director: Timur Bekmambetov
+Film 7205 rating: 6.2 Knowing Genre: [Drama, Action, Thriller, Mystery, Sci-Fi] director: Alex Proyas
+Film 7838 rating: 7.8 X-Men: First Class Genre: [Adventure, Action, Thriller, Sci-Fi, War] director: Matthew Vaughn
 
 testing with following args: film:Indiana Jones and the temple of doom | genre:adventure | limit:15 | 
 Film 974 rating: 8.5 Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) Genre: [Adventure, Action] director: Steven Spielberg
@@ -24,44 +24,44 @@ Film 3890 rating: 8.8 Lord of the Rings: The Fellowship of the Ring, The Genre: 
 Film 2081 rating: 8.7 Matrix, The Genre: [Action, Thriller, Sci-Fi] director: Lana Wachowski
 Film 714 rating: 9.2 Godfather, The Genre: [Drama, Crime] director: Francis Ford Coppola
 Film 303 rating: 9.3 Shawshank Redemption, The Genre: [Drama, Crime] director: Frank Darabont
-Film 544 rating: 8.6 Silence of the Lambs, The Genre: [Crime, Thriller, Horror] director: Jonathan Demme
 Film 973 rating: 8.1 Princess Bride, The Genre: [Adventure, Comedy, Fantasy, Romance, Action] director: Rob Reiner
+Film 544 rating: 8.6 Silence of the Lambs, The Genre: [Crime, Thriller, Horror] director: Jonathan Demme
 Film 340 rating: 8.8 Forrest Gump Genre: [Comedy, Romance, Drama, War] director: Robert Zemeckis
 Film 2192 rating: 7.8 Ghostbusters (a.k.a. Ghost Busters) Genre: [Comedy, Action, Sci-Fi] director: Ivan Reitman
 
 testing with following args: actor:Jason Statham,Keanu Reeves | genre:action | limit:50 | 
-Film 6510 rating: 6.5 Chaos Genre: [Drama, Action, Crime, Thriller] director: Tony Giglio
-Film 7048 rating: 6.4 Death Race Genre: [Adventure, Action, Thriller, Sci-Fi] director: Paul W.S. Anderson
-Film 170 rating: 5.5 Johnny Mnemonic Genre: [Action, Thriller, Sci-Fi] director: Robert Longo
+Film 610 rating: 5.4 Feeling Minnesota Genre: [Romance, Drama] director: Steven Baigelman
 Film 348 rating: 6.0 Little Buddha Genre: [Drama] director: Bernardo Bertolucci
+Film 360 rating: 7.2 Speed Genre: [Romance, Action, Thriller] director: Jan de Bont
+Film 7231 rating: 6.2 Crank: High Voltage Genre: [Comedy, Action, Crime] director: Brian Taylor
+Film 6067 rating: 6.9 Constantine Genre: [Fantasy, Action, Thriller, Horror] director: Francis Lawrence
+Film 1328 rating: 7.5 The Devil's Advocate Genre: [Drama, Thriller, Mystery] director: Taylor Hackford
+Film 7114 rating: 6.1 Transporter 3 Genre: [Adventure, Action, Crime, Thriller] director: Olivier Megaton
+Film 3882 rating: 6.2 Bill & Ted's Bogus Journey Genre: [Adventure, Comedy, Fantasy, Sci-Fi] director: Peter Hewitt
+Film 6510 rating: 6.5 Chaos Genre: [Drama, Action, Crime, Thriller] director: Tony Giglio
+Film 2081 rating: 8.7 Matrix, The Genre: [Action, Thriller, Sci-Fi] director: Lana Wachowski
+Film 6235 rating: 6.3 Transporter 2 Genre: [Action, Crime, Thriller] director: Louis Leterrier
+Film 698 rating: 5.6 Chain Reaction Genre: [Adventure, Action, Thriller] director: Andrew Davis
+Film 7802 rating: 6.0 Henry's Crime Genre: [Comedy, Crime] director: Malcolm Venville
+Film 3620 rating: 6.9 Bill & Ted's Excellent Adventure Genre: [Adventure, Comedy, Sci-Fi] director: Stephen Herek
+Film 6459 rating: 6.8 Lake House, The Genre: [Fantasy, Romance, Drama] director: Alejandro Agresti
+Film 7917 rating: 6.5 Killer Elite Genre: [Action, Thriller] director: Gary McKendry
+Film 3107 rating: 6.5 Replacements, The Genre: [Comedy] director: Howard Deutch
+Film 9095 rating: 0.0 The Neon Demon Genre: [Drama, Horror, Mystery] director: Nicolas Winding Refn
+Film 202 rating: 6.6 Walk in the Clouds, A Genre: [Romance, Drama] director: Alfonso Arau
+Film 170 rating: 5.5 Johnny Mnemonic Genre: [Action, Thriller, Sci-Fi] director: Robert Longo
+Film 3332 rating: 6.7 Sweet November Genre: [Romance, Drama] director: Pat O'Connor
+Film 3758 rating: 6.3 Hardball Genre: [Drama] director: Brian Robbins
+Film 8476 rating: 6.3 47 Ronin Genre: [Adventure, Fantasy, Action] director: Carl Rinsch
+Film 8711 rating: 7.2 John Wick Genre: [Action, Thriller] director: David Leitch
 Film 6298 rating: 6.5 Revolver Genre: [Drama, Crime, Thriller] director: Guy Ritchie
 Film 4227 rating: 6.8 Transporter, The Genre: [Action, Crime] director: Louis Leterrier
-Film 6890 rating: 3.8 In the Name of the King: A Dungeon Siege Tale Genre: [Adventure, Fantasy, Action] director: Uwe Boll
-Film 8476 rating: 6.3 47 Ronin Genre: [Adventure, Fantasy, Action] director: Carl Rinsch
-Film 6067 rating: 6.9 Constantine Genre: [Fantasy, Action, Thriller, Horror] director: Francis Lawrence
-Film 7773 rating: 6.6 Mechanic, The Genre: [Drama, Action, Thriller] director: Simon West
-Film 3758 rating: 6.3 Hardball Genre: [Drama] director: Brian Robbins
-Film 610 rating: 5.4 Feeling Minnesota Genre: [Romance, Drama] director: Steven Baigelman
-Film 202 rating: 6.6 Walk in the Clouds, A Genre: [Romance, Drama] director: Alfonso Arau
-Film 7114 rating: 6.1 Transporter 3 Genre: [Adventure, Action, Crime, Thriller] director: Olivier Megaton
-Film 6235 rating: 6.3 Transporter 2 Genre: [Action, Crime, Thriller] director: Louis Leterrier
-Film 3107 rating: 6.5 Replacements, The Genre: [Comedy] director: Howard Deutch
-Film 3332 rating: 6.7 Sweet November Genre: [Romance, Drama] director: Pat O'Connor
-Film 1328 rating: 7.5 The Devil's Advocate Genre: [Drama, Thriller, Mystery] director: Taylor Hackford
-Film 7802 rating: 6.0 Henry's Crime Genre: [Comedy, Crime] director: Malcolm Venville
-Film 7127 rating: 5.5 Day the Earth Stood Still, The Genre: [Drama, Thriller, Sci-Fi, IMAX] director: Scott Derrickson
-Film 6459 rating: 6.8 Lake House, The Genre: [Fantasy, Romance, Drama] director: Alejandro Agresti
-Film 2081 rating: 8.7 Matrix, The Genre: [Action, Thriller, Sci-Fi] director: Lana Wachowski
-Film 6950 rating: 6.8 Street Kings Genre: [Drama, Crime, Thriller] director: David Ayer
-Film 698 rating: 5.6 Chain Reaction Genre: [Adventure, Action, Thriller] director: Andrew Davis
-Film 8711 rating: 7.2 John Wick Genre: [Action, Thriller] director: David Leitch
-Film 360 rating: 7.2 Speed Genre: [Romance, Action, Thriller] director: Jan de Bont
-Film 9095 rating: 0.0 The Neon Demon Genre: [Drama, Horror, Mystery] director: Nicolas Winding Refn
-Film 3882 rating: 6.2 Bill & Ted's Bogus Journey Genre: [Adventure, Comedy, Fantasy, Sci-Fi] director: Peter Hewitt
-Film 6508 rating: 7.0 Crank Genre: [Action, Thriller] director: Brian Taylor
-Film 7231 rating: 6.2 Crank: High Voltage Genre: [Comedy, Action, Crime] director: Brian Taylor
 Film 6920 rating: 7.3 Bank Job, The Genre: [Action, Crime, Thriller] director: Roger Donaldson
-Film 3620 rating: 6.9 Bill & Ted's Excellent Adventure Genre: [Adventure, Comedy, Sci-Fi] director: Stephen Herek
-Film 7917 rating: 6.5 Killer Elite Genre: [Action, Thriller] director: Gary McKendry
+Film 6508 rating: 7.0 Crank Genre: [Action, Thriller] director: Brian Taylor
+Film 6890 rating: 3.8 In the Name of the King: A Dungeon Siege Tale Genre: [Adventure, Fantasy, Action] director: Uwe Boll
+Film 7127 rating: 5.5 Day the Earth Stood Still, The Genre: [Drama, Thriller, Sci-Fi, IMAX] director: Scott Derrickson
+Film 7773 rating: 6.6 Mechanic, The Genre: [Drama, Action, Thriller] director: Simon West
+Film 7048 rating: 6.4 Death Race Genre: [Adventure, Action, Thriller, Sci-Fi] director: Paul W.S. Anderson
+Film 6950 rating: 6.8 Street Kings Genre: [Drama, Crime, Thriller] director: David Ayer
 
 Test ended succesfully
