@@ -93,9 +93,10 @@ public class MovieBase {
 
     public List<Movie> getMovies() {
         List<Movie> someMovies = new LinkedList<>();
-        for(int key: movies.keySet()){
-            someMovies.add(movies.get(key));
-        }
+        someMovies.addAll(movies.values());
+//        for(int key: movies.keySet()){
+//            someMovies.add(movies.get(key));
+//        }
         return someMovies;
     }
 
@@ -207,6 +208,7 @@ public class MovieBase {
     private List<Movie> movieMapToSortedList(HashMap<Movie,Integer> filteredMovies) {
         List<Movie> movies;
 
+        //converts hashmap to sorted movielist. sorted by value
         movies = filteredMovies.entrySet().stream()
                 .sorted(Comparator.comparing(Map.Entry::getValue,Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
@@ -301,11 +303,14 @@ public class MovieBase {
     }
 
     public Movie selectMovieFromConsole(){
+
+        //Show films with similar title
         Scanner reader = new Scanner(System.in);
         System.out.println("Bitte geben Sie einen zu suchenden Titel ein");
         String title = reader.nextLine();
         List<Movie> movies = getMoviesWithSimilarTitle(title);
 
+        //choose one of them by index
         System.out.println("Bitte geben Sie den Index für den gewünschten Film ein.");
         if(movies.size()>0){
             int counter = 0;
@@ -313,7 +318,7 @@ public class MovieBase {
                 System.out.println("("+counter+")"+m.toString());
                 counter ++;
             }
-            int inpInt = reader.nextInt();
+            int inpInt = Integer.valueOf(reader.nextLine());
             return movies.get(inpInt);
         }else{
             return null;
@@ -322,6 +327,8 @@ public class MovieBase {
     }
 
     public MovieBase(String path){
+
+        //import database from file
         movies = new HashMap<>();
         actors = new HashMap<>();
         directors = new HashMap<>();
@@ -371,7 +378,8 @@ public class MovieBase {
                             throw new FileValidityException("unhandled Entity:" + line);
                     }
                 }else{
-                    //mode is current type of datasets
+
+                    //mode is current type of datasets for individual handling
                     switch(mode){
                         case "actorIdToName":
                             actor = new Actor(line);

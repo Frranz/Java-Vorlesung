@@ -16,6 +16,7 @@ public class UserRatings {
     public void addReview(Review r){
         reviews.add(r);
         try {
+
             //add new userRating to userRatings.txt
             Writer output = new BufferedWriter(new FileWriter(this.filePath,true));
             String write = "\""+r.getMovie().getId()+"\",\""+r.getScore()+"\"\n";
@@ -34,6 +35,7 @@ public class UserRatings {
         String[] lineSplit;
 
         try {
+
             //import userRatings from userRatings.txt
             BufferedReader br = new BufferedReader(new FileReader(path));
             String line = br.readLine();
@@ -55,13 +57,16 @@ public class UserRatings {
 
 
     public void newReviewInteractive(MovieBase mb) {
+
+        //chose movie
         boolean runLoop = true;
         Scanner reader = new Scanner(System.in);
         float score = -1;
         Movie selectedMovie = mb.selectMovieFromConsole();
 
+        //set rating
         if(selectedMovie!=null){
-            while(runLoop){                                                                 //score einlesen
+            while(runLoop){                                                                 
                 System.out.println("Wie viele Sterne würden Sie dem Film geben? [1-5]");
                 score = reader.nextFloat();
                 if(score>=0 && score <=5){
