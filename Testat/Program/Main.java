@@ -8,15 +8,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
-    private static final String filepath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\movieproject.db";
-    private static final String userRatingsPath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\userRatings.txt";
-    private static final String testPath = "C:\\Users\\BUBELF\\Documents\\uni\\Java-Vorlesung\\Testat\\test.txt";
+    private static final String filepath = "movieproject.db";
+    private static final String userRatingsPath = "userRatings.txt";
+    private static final String testPath = "test.txt";
 
     public static void main(String args[]){
         String[][] argsArr = new String[args.length][];
         System.out.println("Moviedatenbank wird geladen...");
         MovieBase bs = new MovieBase(filepath);
-  //      MovieBase bs = createMovieBase(filepath);
         System.out.println("Moviedatenbank wurde fertig geladen...");
 
 
@@ -125,6 +124,8 @@ public class Main {
                 counter--;
                 sizeLeft--;
             }
+
+            //if still some movies left go on
             if(sizeLeft>0){
                 System.out.println("Drücken Sie Enter für weiter Ergebnisse");
                 sc.nextLine();

@@ -1,0 +1,67 @@
+Test from: 2018-07-18 11:09:14.003
+
+testing with following args: genre:Thriller | movie:Indiana Jones | limit:10 | 
+Film 554 rating: 8.2 Fargo Genre: [Comedy, Drama, Crime, Thriller] director: Ethan Coen
+Film 4213 rating: 7.2 Time After Time Genre: [Thriller, Sci-Fi] director: Nicholas Meyer
+Film 4224 rating: 7.5 Thesis (Tesis) Genre: [Drama, Thriller, Horror] director: Alejandro Amenábar
+Film 6774 rating: 6.2 Rush Hour 3 Genre: [Comedy, Action, Crime, Thriller] director: Brett Ratner
+Film 2387 rating: 7.3 Dr. No Genre: [Adventure, Action, Thriller] director: Terence Young
+Film 2423 rating: 7.0 Thunderball Genre: [Adventure, Action, Thriller] director: Terence Young
+Film 1551 rating: 6.6 Nightmare on Elm Street 3: Dream Warriors, A Genre: [Thriller, Horror] director: Chuck Russell
+Film 6709 rating: 6.1 Condemned, The Genre: [Adventure, Action, Crime, Thriller] director: Scott Wiper
+Film 7186 rating: 6.3 Frontière(s) Genre: [Drama, Thriller, Horror] director: Xavier Gens
+Film 7830 rating: 7.9 The Man from Nowhere Genre: [Action, Crime, Thriller] director: Jeong-beom Lee
+
+testing with following args: film:Indiana Jones and the temple of doom | genre:adventure | limit:15 | 
+Film 974 rating: 8.5 Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) Genre: [Adventure, Action] director: Steven Spielberg
+Film 251 rating: 8.7 Star Wars: Episode IV - A New Hope Genre: [Adventure, Action, Sci-Fi] director: George Lucas
+Film 972 rating: 8.8 Star Wars: Episode V - The Empire Strikes Back Genre: [Adventure, Action, Sci-Fi] director: Irvin Kershner
+Film 1064 rating: 8.3 Indiana Jones and the Last Crusade Genre: [Adventure, Action] director: Steven Spielberg
+Film 285 rating: 8.9 Pulp Fiction Genre: [Comedy, Drama, Crime, Thriller] director: Quentin Tarantino
+Film 985 rating: 8.4 Star Wars: Episode VI - Return of the Jedi Genre: [Adventure, Action, Sci-Fi] director: Richard Marquand
+Film 1043 rating: 8.5 Back to the Future Genre: [Adventure, Comedy, Sci-Fi] director: Robert Zemeckis
+Film 3890 rating: 8.8 Lord of the Rings: The Fellowship of the Ring, The Genre: [Adventure, Fantasy] director: Peter Jackson
+Film 2081 rating: 8.7 Matrix, The Genre: [Action, Thriller, Sci-Fi] director: Lana Wachowski
+Film 714 rating: 9.2 Godfather, The Genre: [Drama, Crime] director: Francis Ford Coppola
+Film 303 rating: 9.3 Shawshank Redemption, The Genre: [Drama, Crime] director: Frank Darabont
+Film 544 rating: 8.6 Silence of the Lambs, The Genre: [Crime, Thriller, Horror] director: Jonathan Demme
+Film 973 rating: 8.1 Princess Bride, The Genre: [Adventure, Comedy, Fantasy, Romance, Action] director: Rob Reiner
+Film 340 rating: 8.8 Forrest Gump Genre: [Comedy, Romance, Drama, War] director: Robert Zemeckis
+Film 2192 rating: 7.8 Ghostbusters (a.k.a. Ghost Busters) Genre: [Comedy, Action, Sci-Fi] director: Ivan Reitman
+
+testing with following args: actor:Jason Statham,Keanu Reeves | genre:action | limit:50 | 
+Film 170 rating: 5.5 Johnny Mnemonic Genre: [Action, Thriller, Sci-Fi] director: Robert Longo
+Film 6298 rating: 6.5 Revolver Genre: [Drama, Crime, Thriller] director: Guy Ritchie
+Film 3758 rating: 6.3 Hardball Genre: [Drama] director: Brian Robbins
+Film 9095 rating: 0.0 The Neon Demon Genre: [Drama, Horror, Mystery] director: Nicolas Winding Refn
+Film 7127 rating: 5.5 Day the Earth Stood Still, The Genre: [Drama, Thriller, Sci-Fi, IMAX] director: Scott Derrickson
+Film 8476 rating: 6.3 47 Ronin Genre: [Adventure, Fantasy, Action] director: Carl Rinsch
+Film 1328 rating: 7.5 The Devil's Advocate Genre: [Drama, Thriller, Mystery] director: Taylor Hackford
+Film 6950 rating: 6.8 Street Kings Genre: [Drama, Crime, Thriller] director: David Ayer
+Film 3620 rating: 6.9 Bill & Ted's Excellent Adventure Genre: [Adventure, Comedy, Sci-Fi] director: Stephen Herek
+Film 4227 rating: 6.8 Transporter, The Genre: [Action, Crime] director: Louis Leterrier
+Film 698 rating: 5.6 Chain Reaction Genre: [Adventure, Action, Thriller] director: Andrew Davis
+Film 7773 rating: 6.6 Mechanic, The Genre: [Drama, Action, Thriller] director: Simon West
+Film 6920 rating: 7.3 Bank Job, The Genre: [Action, Crime, Thriller] director: Roger Donaldson
+Film 6508 rating: 7.0 Crank Genre: [Action, Thriller] director: Brian Taylor
+Film 6067 rating: 6.9 Constantine Genre: [Fantasy, Action, Thriller, Horror] director: Francis Lawrence
+Film 348 rating: 6.0 Little Buddha Genre: [Drama] director: Bernardo Bertolucci
+Film 2081 rating: 8.7 Matrix, The Genre: [Action, Thriller, Sci-Fi] director: Lana Wachowski
+Film 7048 rating: 6.4 Death Race Genre: [Adventure, Action, Thriller, Sci-Fi] director: Paul W.S. Anderson
+Film 202 rating: 6.6 Walk in the Clouds, A Genre: [Romance, Drama] director: Alfonso Arau
+Film 7114 rating: 6.1 Transporter 3 Genre: [Adventure, Action, Crime, Thriller] director: Olivier Megaton
+Film 360 rating: 7.2 Speed Genre: [Romance, Action, Thriller] director: Jan de Bont
+Film 6459 rating: 6.8 Lake House, The Genre: [Fantasy, Romance, Drama] director: Alejandro Agresti
+Film 8711 rating: 7.2 John Wick Genre: [Action, Thriller] director: David Leitch
+Film 3107 rating: 6.5 Replacements, The Genre: [Comedy] director: Howard Deutch
+Film 3882 rating: 6.2 Bill & Ted's Bogus Journey Genre: [Adventure, Comedy, Fantasy, Sci-Fi] director: Peter Hewitt
+Film 610 rating: 5.4 Feeling Minnesota Genre: [Romance, Drama] director: Steven Baigelman
+Film 7802 rating: 6.0 Henry's Crime Genre: [Comedy, Crime] director: Malcolm Venville
+Film 6510 rating: 6.5 Chaos Genre: [Drama, Action, Crime, Thriller] director: Tony Giglio
+Film 6890 rating: 3.8 In the Name of the King: A Dungeon Siege Tale Genre: [Adventure, Fantasy, Action] director: Uwe Boll
+Film 7917 rating: 6.5 Killer Elite Genre: [Action, Thriller] director: Gary McKendry
+Film 7231 rating: 6.2 Crank: High Voltage Genre: [Comedy, Action, Crime] director: Brian Taylor
+Film 3332 rating: 6.7 Sweet November Genre: [Romance, Drama] director: Pat O'Connor
+Film 6235 rating: 6.3 Transporter 2 Genre: [Action, Crime, Thriller] director: Louis Leterrier
+
+Test ended succesfully

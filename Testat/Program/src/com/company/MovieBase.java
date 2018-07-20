@@ -131,9 +131,6 @@ public class MovieBase {
                 case "director":
                     filterCounter = 0;
                     for(String val:vals){
-                        if(counter==509){
-                            System.out.println(counter);
-                        }
                         director = m.getDirector();
                         if(director != null && m.getDirector().getName().equals(val)){
                             filterCounter++;
@@ -217,6 +214,18 @@ public class MovieBase {
     }
 
     public void getSimilarMovies(HashMap<Movie, Integer> filteredMovies, String[] vals) {
+
+
+        /* calculate average Review score for reviewers of movie in question and their standard Deviation
+         *   to find bottom, middle and top 1/3 of their reviews and add points to hashmap based on the position*/
+
+        /*
+        * for each movie in filter
+        *   getReviewers
+        *       get the other reviews of the reviewer
+        *           calculate their average and standard deviation to get their bottom, middle and top 1/3 of rated movies
+        *           add respective value for each of the reviewed movies to hashmap
+        * */
         HashMap<Movie,Integer> movieRatings = new HashMap<>();
         Movie movie;
         List<Review> reviews;
@@ -226,29 +235,25 @@ public class MovieBase {
         int addScore;
         int userAverageReviewScore;
         int standardDeviation;
-        int[] counter = new int[3];
-        counter[0] = 0;
-        counter[1] = 0;
-        counter[2] = 0;
 
-        int[] counter2 = new int[3];
-        counter2[0] = 0;
-        counter2[1] = 0;
-        counter2[2] = 0;
+        //loop over every film from filter
         for (String s: vals){
-            movie = getMovieByName(s);      //movie to be filtered by
+            movie = getMovieByName(s);
+
+            //check if movie could be found
             if (movie != null) {
                 reviews = movie.getReviews();
-//
+
+                //loop over all reviews of movie
                 for(Review movieReview: reviews){
                     movieReviewerReviews = movieReview.getReviewer().getReviews();
 
-                    /*  calculate average Review score and standard Deviation
-                    *   to find bottom, middle and top 1/3 of their reviews     */
+                    //calculate averageReviewScore and StandardDeviation
                     userAverageReviewScore = movieReviewerReviews.stream().mapToInt(value -> (int) value.getScore()*100).sum()/movieReviewerReviews.size(); //get average review score of certain reviewer for normalization
                     int finalUserAverageReviewScore = userAverageReviewScore;
                     standardDeviation = (int) Math.sqrt(movieReview.getReviewer().getReviews().stream().mapToInt(value ->(int) Math.pow(Math.abs( value.getScore()*100- finalUserAverageReviewScore),2)).sum()/movieReview.getReviewer().getReviews().size());
 
+                    //loop through other reviews of each reviewer and get the
                     for(Review userReview:movieReviewerReviews){
                         reviewedMovie = userReview.getMovie();
 
@@ -258,13 +263,10 @@ public class MovieBase {
 
                             if(userReview.getScore()*100<finalUserAverageReviewScore-(0.44*standardDeviation)){         //gets ~bottom 33% of Reviews
                                 addScore = -1;
-                                counter[0] +=1;
                             }else if(userReview.getScore()*100<finalUserAverageReviewScore+(0.43*standardDeviation)){   //gets ~middle 33% of Reviews
                                 addScore = 1;
-                                counter[1] +=1;
                             }else{                                                                                      //gets ~top 33% of Reviews
                                 addScore = 2;
-                                counter[2] +=1;
                             }
 
                             newScore = filteredMovies.get(reviewedMovie) + addScore;
@@ -274,18 +276,23 @@ public class MovieBase {
 
                 }
             }else{
-                System.out.println("Movie: "+s +" could not be found in database. This error should not occure. Something went really really wrong here");
+                System.out.println("One of the Movies was not found. It will be ignored in the filtering");
             }
         }
     }
 
     private Movie getMovieByName(String s) {
+
+        //searches Film with exact same name
         for(Movie m: movies.values()){
             if(m.getTitle().equalsIgnoreCase(s)){
                 return m;
             }
         }
-        return null;
+
+        //if no film found, get first film with similar title
+
+        return getMoviesWithSimilarTitle(s).get(0);
     }
 
     public static void print(String s){
