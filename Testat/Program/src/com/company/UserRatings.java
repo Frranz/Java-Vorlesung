@@ -67,19 +67,19 @@ public class UserRatings {
         //set rating
         if(selectedMovie!=null){
             while(runLoop){                                                                 
-                System.out.println("Wie viele Sterne würden Sie dem Film geben? [1-5]");
+                System.out.println("Wie viele Sterne wuerden Sie dem Film geben? [1-5]");
                 score = reader.nextFloat();
                 if(score>=0 && score <=5){
                     runLoop = false;
                 }else{
-                    System.out.println("Eingabe muss kleiner 5 und größer 1 sein.\n");
+                    System.out.println("Eingabe muss kleiner 5 und groeßer 1 sein.\n");
                 }
             }
             Review review =  new Review(score,selectedMovie);
             addReview(review);
-            System.out.println("Review wurde hinzugefügt");
+            System.out.println("Review wurde hinzugefuegt");
         }else{
-            System.out.println("ungültiger Index ausgewählt oder keinen Film mit ähnlichem Titel gefunden");
+            System.out.println("ungueltiger Index ausgewaehlt oder keinen Film mit aehnlichem Titel gefunden");
         }
 
     }

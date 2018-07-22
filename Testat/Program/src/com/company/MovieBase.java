@@ -87,6 +87,15 @@ public class MovieBase {
         return directors.get(i);
     }
 
+    public Director getDirectorByName(String s){
+        for (Director d:directors.values()){
+            if(d.getName().equals(s)){
+                return d;
+            }
+        }
+        return null;
+    }
+
     public Reviewer getReviewer(String userName){
         return reviewers.get(userName);
     }
@@ -101,6 +110,7 @@ public class MovieBase {
     }
 
     private void filterByListAttribute(HashMap<Movie, Integer> filteredMovies, String filterKey, String[] vals){
+        List<Director> movieDirectors;
         Director director;
         Iterator<Movie> iterator = getMovies().iterator();
         Movie m;
@@ -131,8 +141,9 @@ public class MovieBase {
                 case "director":
                     filterCounter = 0;
                     for(String val:vals){
-                        director = m.getDirector();
-                        if(director != null && m.getDirector().getName().equals(val)){
+                        movieDirectors = m.getDirectors();
+                        director = getDirectorByName(val);
+                        if(director != null && movieDirectors.contains(director)){
                             filterCounter++;
                         }
                     }
@@ -329,7 +340,7 @@ public class MovieBase {
         List<Movie> movies = getMoviesWithSimilarTitle(title);
 
         //choose one of them by index
-        System.out.println("Bitte geben Sie den Index für den gewünschten Film ein.");
+        System.out.println("Bitte geben Sie den Index fuer den gewuenschten Film ein.");
         if(movies.size()>0){
             int counter = 0;
             for(Movie m: movies){

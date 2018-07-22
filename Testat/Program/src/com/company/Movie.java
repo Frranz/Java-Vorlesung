@@ -1,8 +1,10 @@
 package src.com.company;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Movie{
     private int id;
@@ -12,7 +14,7 @@ public class Movie{
     private List<Actor> actors;
     private List<String> actorNames;
 
-    private Director director;
+    private List<Director> directors;
     private String release;
     private List<Review> reviews;
     private int reviewAmount;
@@ -23,6 +25,7 @@ public class Movie{
         actorNames = new LinkedList<>();
         reviews = new LinkedList<>();
         genre = new LinkedList<>();
+        directors = new LinkedList<>();
 
         //splits database entry to relevant contents
         String[] lineSplit = line.substring(1,line.length()-1).split("\",\"");
@@ -45,10 +48,9 @@ public class Movie{
 
     public String toString(){
         String title = (this.title==null)?"":this.title;
-        String genre = (this.genre==null)?"":this.genre.toString();
-        String director = (this.director==null)?"":this.director.getName();
-
-        return "Film "+id+" rating: "+averageReviewScore+" "+title+" Genre: "+genre+" director: "+director;
+        String genre = (this.genre==null)?"":this.genre.stream().collect(Collectors.joining(","));
+        String director = (this.directors.toString()==null)?"":this.directors.stream().map(Human::getName).collect(Collectors.joining(","));
+        return String.format("FilmId: %4d | rating:%.1f | title: %s | genre: %s| directors: %s",id,averageReviewScore,title,genre,director);
     }
 
     public void addActors(Actor newActor){
@@ -107,12 +109,12 @@ public class Movie{
         this.genre.add(genre);
     }
 
-    public Director getDirector() {
-        return director;
+    public List<Director> getDirectors() {
+        return directors;
     }
 
     public void setDirector(Director director) {
-        this.director = director;
+        this.directors.add(director);
     }
 
     public String getRelease() {

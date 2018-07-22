@@ -53,7 +53,7 @@ public class Main {
         while(runLoop){
             System.out.println("Willkommen in der Filmdatenbank");
             System.out.println("================================\n");
-            System.out.println("Bitte wählen sie eine Option aus:");
+            System.out.println("Bitte waehlen sie eine Option aus:");
             System.out.println("[0] Filme bewerten");
             System.out.println("[1] Empfehlungen ansehen");
             System.out.println("[2] Film suchen");
@@ -99,7 +99,7 @@ public class Main {
                     for(Review r:userRatings.getReviews()){
                         System.out.println(r);
                     }
-                    System.out.println("Ausgabe beendet. Enter drücken zum fortfahren");
+                    System.out.println("Ausgabe beendet. Enter druecken zum fortfahren");
                     scanner.nextLine();
                     break;
                 case "4":
@@ -107,7 +107,7 @@ public class Main {
                     runLoop = false;
                     break;
                 default:
-                    System.out.println("ungültige Eingabe. Versuchen Sie es erneut.");
+                    System.out.println("ungueltige Eingabe. Versuchen Sie es erneut.");
             }
         }
     }
@@ -127,11 +127,11 @@ public class Main {
 
             //if still some movies left go on
             if(sizeLeft>0){
-                System.out.println("Drücken Sie Enter für weiter Ergebnisse");
+                System.out.println("Druecken Sie Enter fuer weiter Ergebnisse");
                 sc.nextLine();
             }
         }
-        System.out.println("Drücken sie Enter zum beenden");
+        System.out.println("Druecken sie Enter zum beenden");
         sc.nextLine();
     }
 
