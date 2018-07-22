@@ -1,0 +1,67 @@
+Test from: 2018-07-22 21:11:06.348
+
+testing with following args: genre:Thriller | movie:Indiana Jones | limit:10 | 
+FilmId: 1220 | rating:6,1 | title: Devil's Own, The | genre: Drama,Action,Thriller| directors: Alan J. Pakula
+FilmId: 4895 | rating:8,1 | title: Cercle Rouge, Le (Red Circle, The) | genre: Crime,Thriller| directors: Jean-Pierre Melville
+FilmId: 4917 | rating:6,9 | title: Dance with a Stranger | genre: Drama,Crime,Thriller| directors: Mike Newell
+FilmId: 7386 | rating:8,0 | title: Balance | genre: Animation,Drama,Thriller,Mystery,Sci-Fi| directors: Christoph Lauenstein,Wolfgang Lauenstein
+FilmId: 3097 | rating:5,9 | title: Silent Fall | genre: Drama,Thriller| directors: Bruce Beresford
+FilmId: 3182 | rating:4,8 | title: Lost Souls | genre: Drama,Thriller,Horror| directors: Janusz Kaminski
+FilmId: 2215 | rating:5,6 | title: No Mercy | genre: Action,Crime,Thriller| directors: Richard Pearce
+FilmId: 7283 | rating:8,0 | title: Prison Break: The Final Break | genre: Drama,Action,Thriller| directors: Kevin Hooks,Brad Turner
+FilmId: 7757 | rating:7,3 | title: Lincoln Lawyer, The | genre: Drama,Crime,Thriller| directors: Brad Furman
+FilmId: 8445 | rating:5,6 | title: Machete Kills (Machete 2) | genre: Action,Crime,Thriller| directors: Robert Rodriguez
+
+testing with following args: film:Indiana Jones and the temple of doom | genre:adventure | limit:15 | 
+FilmId:  974 | rating:8,5 | title: Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) | genre: Adventure,Action| directors: Steven Spielberg
+FilmId:  251 | rating:8,7 | title: Star Wars: Episode IV - A New Hope | genre: Adventure,Action,Sci-Fi| directors: George Lucas
+FilmId:  972 | rating:8,8 | title: Star Wars: Episode V - The Empire Strikes Back | genre: Adventure,Action,Sci-Fi| directors: Irvin Kershner
+FilmId: 1064 | rating:8,3 | title: Indiana Jones and the Last Crusade | genre: Adventure,Action| directors: Steven Spielberg
+FilmId:  285 | rating:8,9 | title: Pulp Fiction | genre: Comedy,Drama,Crime,Thriller| directors: Quentin Tarantino
+FilmId:  985 | rating:8,4 | title: Star Wars: Episode VI - Return of the Jedi | genre: Adventure,Action,Sci-Fi| directors: Richard Marquand
+FilmId: 1043 | rating:8,5 | title: Back to the Future | genre: Adventure,Comedy,Sci-Fi| directors: Robert Zemeckis
+FilmId: 3890 | rating:8,8 | title: Lord of the Rings: The Fellowship of the Ring, The | genre: Adventure,Fantasy| directors: Peter Jackson
+FilmId: 2081 | rating:8,7 | title: Matrix, The | genre: Action,Thriller,Sci-Fi| directors: Andy Wachowski,Lana Wachowski
+FilmId:  714 | rating:9,2 | title: Godfather, The | genre: Drama,Crime| directors: Francis Ford Coppola
+FilmId:  303 | rating:9,3 | title: Shawshank Redemption, The | genre: Drama,Crime| directors: Frank Darabont
+FilmId:  544 | rating:8,6 | title: Silence of the Lambs, The | genre: Crime,Thriller,Horror| directors: Jonathan Demme
+FilmId:  973 | rating:8,1 | title: Princess Bride, The | genre: Adventure,Comedy,Fantasy,Romance,Action| directors: Rob Reiner
+FilmId:  340 | rating:8,8 | title: Forrest Gump | genre: Comedy,Romance,Drama,War| directors: Robert Zemeckis
+FilmId: 2192 | rating:7,8 | title: Ghostbusters (a.k.a. Ghost Busters) | genre: Comedy,Action,Sci-Fi| directors: Ivan Reitman
+
+testing with following args: actor:Jason Statham,Keanu Reeves | genre:action | limit:50 | 
+FilmId: 6510 | rating:6,5 | title: Chaos | genre: Drama,Action,Crime,Thriller| directors: Tony Giglio
+FilmId: 7773 | rating:6,6 | title: Mechanic, The | genre: Drama,Action,Thriller| directors: Simon West
+FilmId: 3758 | rating:6,3 | title: Hardball | genre: Drama| directors: Brian Robbins
+FilmId:  698 | rating:5,6 | title: Chain Reaction | genre: Adventure,Action,Thriller| directors: Andrew Davis
+FilmId: 6920 | rating:7,3 | title: Bank Job, The | genre: Action,Crime,Thriller| directors: Roger Donaldson
+FilmId: 3107 | rating:6,5 | title: Replacements, The | genre: Comedy| directors: Howard Deutch
+FilmId: 4227 | rating:6,8 | title: Transporter, The | genre: Action,Crime| directors: Corey Yuen,Louis Leterrier
+FilmId: 3332 | rating:6,7 | title: Sweet November | genre: Romance,Drama| directors: Pat O'Connor
+FilmId:  348 | rating:6,0 | title: Little Buddha | genre: Drama| directors: Bernardo Bertolucci
+FilmId: 1328 | rating:7,5 | title: The Devil's Advocate | genre: Drama,Thriller,Mystery| directors: Taylor Hackford
+FilmId: 7231 | rating:6,2 | title: Crank: High Voltage | genre: Comedy,Action,Crime| directors: Mark Neveldine,Brian Taylor
+FilmId: 6508 | rating:7,0 | title: Crank | genre: Action,Thriller| directors: Mark Neveldine,Brian Taylor
+FilmId: 7127 | rating:5,5 | title: Day the Earth Stood Still, The | genre: Drama,Thriller,Sci-Fi,IMAX| directors: Scott Derrickson
+FilmId: 6950 | rating:6,8 | title: Street Kings | genre: Drama,Crime,Thriller| directors: David Ayer
+FilmId: 8476 | rating:6,3 | title: 47 Ronin | genre: Adventure,Fantasy,Action| directors: Carl Rinsch
+FilmId:  360 | rating:7,2 | title: Speed | genre: Romance,Action,Thriller| directors: Jan de Bont
+FilmId: 6459 | rating:6,8 | title: Lake House, The | genre: Fantasy,Romance,Drama| directors: Alejandro Agresti
+FilmId: 9095 | rating:0,0 | title: The Neon Demon | genre: Drama,Horror,Mystery| directors: Nicolas Winding Refn
+FilmId: 6298 | rating:6,5 | title: Revolver | genre: Drama,Crime,Thriller| directors: Guy Ritchie
+FilmId: 7917 | rating:6,5 | title: Killer Elite | genre: Action,Thriller| directors: Gary McKendry
+FilmId:  202 | rating:6,6 | title: Walk in the Clouds, A | genre: Romance,Drama| directors: Alfonso Arau
+FilmId: 2081 | rating:8,7 | title: Matrix, The | genre: Action,Thriller,Sci-Fi| directors: Andy Wachowski,Lana Wachowski
+FilmId: 3620 | rating:6,9 | title: Bill & Ted's Excellent Adventure | genre: Adventure,Comedy,Sci-Fi| directors: Stephen Herek
+FilmId: 6067 | rating:6,9 | title: Constantine | genre: Fantasy,Action,Thriller,Horror| directors: Francis Lawrence
+FilmId: 7048 | rating:6,4 | title: Death Race | genre: Adventure,Action,Thriller,Sci-Fi| directors: Paul W.S. Anderson
+FilmId:  610 | rating:5,4 | title: Feeling Minnesota | genre: Romance,Drama| directors: Steven Baigelman
+FilmId:  170 | rating:5,5 | title: Johnny Mnemonic | genre: Action,Thriller,Sci-Fi| directors: Robert Longo
+FilmId: 3882 | rating:6,2 | title: Bill & Ted's Bogus Journey | genre: Adventure,Comedy,Fantasy,Sci-Fi| directors: Peter Hewitt
+FilmId: 8711 | rating:7,2 | title: John Wick | genre: Action,Thriller| directors: Chad Stahelski,David Leitch
+FilmId: 6235 | rating:6,3 | title: Transporter 2 | genre: Action,Crime,Thriller| directors: Louis Leterrier
+FilmId: 7802 | rating:6,0 | title: Henry's Crime | genre: Comedy,Crime| directors: Malcolm Venville
+FilmId: 7114 | rating:6,1 | title: Transporter 3 | genre: Adventure,Action,Crime,Thriller| directors: Olivier Megaton
+FilmId: 6890 | rating:3,8 | title: In the Name of the King: A Dungeon Siege Tale | genre: Adventure,Fantasy,Action| directors: Uwe Boll
+
+Test ended succesfully

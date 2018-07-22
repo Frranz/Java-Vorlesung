@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class Main {
     private static final String filepath = "movieproject.db";
     private static final String userRatingsPath = "userRatings.txt";
-    private static final String testPath = "test.txt";
+    private static final String testPath = "results.txt";
 
     public static void main(String args[]){
         String[][] argsArr = new String[args.length][];
