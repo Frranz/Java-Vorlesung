@@ -141,7 +141,7 @@ public class MovieBase {
 
             if (filterCounter>0) {
                 filteredMovies.putIfAbsent(m, 0);
-                filteredMovies.put(m,filteredMovies.get(m)+filterCounter);
+                filteredMovies.put(m,filteredMovies.get(m)+(filterCounter*10));
             }
             counter++;
         }
@@ -154,6 +154,11 @@ public class MovieBase {
     }
 
     public List<Movie> getSuggestedMovies(String[][] args) {
+        /*
+        * returns list of movies based on arguments.
+        * occurences of hard filters like genre, actor, director
+        * are 10x more valuable than a user having a film in his top 33% group*/
+
         if (args.length == 0 ) {
             System.out.println("keine argumente bei getSuggestedMovie");
             return null;
@@ -195,7 +200,13 @@ public class MovieBase {
         }
         retMovies = movieMapToSortedList(filteredMovies);
 
-        if(limit>0 && retMovies.size()>limit){
+
+        //if no limit set, put limit to 200
+        if(limit == 0){
+            limit = 200;
+        }
+
+        if(retMovies.size()>limit){
             retMovies = retMovies.subList(0,limit);
         }
 

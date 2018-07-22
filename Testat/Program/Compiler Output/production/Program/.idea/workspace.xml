@@ -18,18 +18,11 @@
       <file leaf-file-name="MovieBase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/MovieBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2669">
-              <caret line="364" column="37" selection-start-line="364" selection-start-column="37" selection-end-line="364" selection-end-column="37" />
+            <state relative-caret-position="464">
+              <caret line="185" column="36" selection-start-line="185" selection-start-column="20" selection-end-line="185" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#filterByListAttribute#0;class#MovieBase#0" />
                 <element signature="method#printMoviesList#0;class#MovieBase#0" />
-                <element signature="method#getSuggestedMovies#0;class#MovieBase#0" />
-                <element signature="method#getSimilarMovies#0;class#MovieBase#0" />
-                <element signature="method#getMovieByName#0;class#MovieBase#0" />
-                <element signature="e#9847#9848#0" expanded="true" />
-                <element signature="e#9884#9885#0" expanded="true" />
-                <element signature="method#getMoviesWithSimilarTitle#0;class#MovieBase#0" />
               </folding>
             </state>
           </provider>
@@ -78,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/UserRatings.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1071">
-              <caret line="68" column="92" selection-start-line="68" selection-start-column="92" selection-end-line="68" selection-end-column="92" />
+              <caret line="68" column="56" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,8 +82,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+            <state relative-caret-position="83">
+              <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -158,22 +151,15 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addReview</find>
-      <find>komisch</find>
-      <find />
-      <find>tost</find>
-      <find>movieRatings</find>
-      <find>filteredMovie</find>
       <find>(ArrayList</find>
-      <find>zu suchen</find>
+      <find />
       <find>output</find>
-      <find>fertig geladen</find>
-      <find>nden Titel ein</find>
+      <find />
+      <find />
       <find>reader.nextInt()</find>
       <find>nextLine</find>
       <find>SelectMovieFromConsole</find>
       <find>getMovies</find>
-      <find>getSimilarMovies</find>
       <find>sublist</find>
       <find>Bitte</find>
       <find>reader</find>
@@ -188,6 +174,13 @@
       <find>sc.nextLine</find>
       <find>scanner</find>
       <find>reader.ne</find>
+      <find />
+      <find>getMovieBy</find>
+      <find>getMovieByName</find>
+      <find>counter2</find>
+      <find>counter</find>
+      <find>getSimilarMovies</find>
+      <find>getsimi</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -209,9 +202,9 @@
         <option value="$PROJECT_DIR$/src/com/company/ReviewerTest.java" />
         <option value="$PROJECT_DIR$/src/com/company/MovieBaseTest.java" />
         <option value="$PROJECT_DIR$/src/com/company/Actor.java" />
-        <option value="$PROJECT_DIR$/src/com/company/MovieBase.java" />
         <option value="$PROJECT_DIR$/src/com/company/UserRatings.java" />
         <option value="$PROJECT_DIR$/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/MovieBase.java" />
       </list>
     </option>
   </component>
@@ -226,9 +219,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -277,6 +269,7 @@
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="10" />
     <property name="last.edited.regexp" value="&quot;sadf&quot;,&quot;asdfe&#10;&#10;&#10;" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../deletetetete/basti java/FilmEmpfehlungDatenbank" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -307,13 +300,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.interactive mode">
+  <component name="RunManager" selected="Application.Greatest Configuration of all time">
     <configuration name="Greatest Configuration of all time" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="10" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Program" />
-      <option name="PROGRAM_PARAMETERS" value="--film=&quot;American Beauty,Matrix&quot; --limit=10" />
+      <option name="PROGRAM_PARAMETERS" value="--film=&quot;American Beauty,Matrix&quot; --genre=&quot;Thriller,Crime,Comedy&quot; --director=&quot;Steven Spielberg,huso&quot; --limit=10" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration name="Tset" type="Application" factoryName="Application">
@@ -527,7 +520,8 @@
       <workItem from="1531419895902" duration="2351000" />
       <workItem from="1531743086716" duration="6857000" />
       <workItem from="1531827571056" duration="5372000" />
-      <workItem from="1532082527999" duration="284000" />
+      <workItem from="1532082527999" duration="3899000" />
+      <workItem from="1532279469781" duration="320000" />
     </task>
     <servers />
   </component>
@@ -564,7 +558,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120699000" />
+    <option name="totallyTimeSpent" value="124634000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -584,14 +578,14 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32905984" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.24643874" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24358974" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.53276354" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24697986" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25033557" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.07692308" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2977208" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
       <window_info anchor="right" id="Coverage" order="3" side_tool="true" weight="0.3295302" />
@@ -607,29 +601,29 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3295302" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22533137" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33892617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22533137" />
       <window_info id="Designer" order="2" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.45508102" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.53276354" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32905984" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.45508102" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32905984" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32763532" />
-      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.3295302" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info id="Favorites" order="4" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -643,19 +637,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MovieBase.java</url>
-          <line>159</line>
-          <properties />
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Main.java</url>
-          <line>54</line>
+          <line>53</line>
           <properties />
           <option name="timeStamp" value="132" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="134" />
+      <option name="time" value="135" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -667,6 +655,26 @@
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>getMovieByName(&quot;matrix&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Matrix</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>vals</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>s</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>mb.getReviewers()</expression-string>
         <language-id>JAVA</language-id>
@@ -689,26 +697,6 @@
       </expression>
       <expression>
         <expression-string>mb.getActors()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>mb.getMovies()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>mb.getMovieById(8122)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>mb.getMovieById(8123)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>mb.getMovieById(8124)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -978,6 +966,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="28" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1021,24 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/MovieBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2669">
-          <caret line="364" column="37" selection-start-line="364" selection-start-column="37" selection-end-line="364" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#filterByListAttribute#0;class#MovieBase#0" />
-            <element signature="method#printMoviesList#0;class#MovieBase#0" />
-            <element signature="method#getSuggestedMovies#0;class#MovieBase#0" />
-            <element signature="method#getSimilarMovies#0;class#MovieBase#0" />
-            <element signature="method#getMovieByName#0;class#MovieBase#0" />
-            <element signature="e#9847#9848#0" expanded="true" />
-            <element signature="e#9884#9885#0" expanded="true" />
-            <element signature="method#getMoviesWithSimilarTitle#0;class#MovieBase#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MovieBaseTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1075,17 +1052,28 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/UserRatings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
-          <caret line="68" column="92" selection-start-line="68" selection-start-column="92" selection-end-line="68" selection-end-column="92" />
+          <caret line="68" column="56" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/MovieBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="185" column="36" selection-start-line="185" selection-start-column="20" selection-end-line="185" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#printMoviesList#0;class#MovieBase#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+        <state relative-caret-position="83">
+          <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
